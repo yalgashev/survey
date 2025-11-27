@@ -1,0 +1,140 @@
+from django import forms
+from django.utils.translation import gettext_lazy as _
+from .models import Survey, Group, Question, Answer
+
+
+class GroupSelectionForm(forms.Form):
+    """Form for selecting academic group and language"""
+    group = forms.ModelChoiceField(
+        queryset=Group.objects.all(),
+        empty_label=_('Select your group'),
+        widget=forms.Select(attrs={
+            'class': 'form-select form-select-lg',
+            'required': True
+        }),
+        label=_('Academic Group')
+    )
+
+
+class QuestionForm(forms.ModelForm):
+    """Form for creating/editing survey questions in admin"""
+    
+    class Meta:
+        model = Question
+        fields = ['text_en', 'text_uz', 'text_ru', 'question_type', 'order', 'is_active']
+        widgets = {
+            'text_en': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'text_uz': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'text_ru': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'question_type': forms.Select(attrs={'class': 'form-select'}),
+            'order': forms.NumberInput(attrs={'class': 'form-control'}),
+            'is_active': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+        }
+
+
+class SurveyForm(forms.ModelForm):
+    """Form for evaluating a professor"""
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Make all rating fields required
+        for field_name in ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10',
+                          'q11', 'q12', 'q13', 'q14', 'q15', 'q16', 'q17', 'q18', 'q19']:
+            self.fields[field_name].required = True
+            # Remove the blank choice for RadioSelect
+            if hasattr(self.fields[field_name], 'choices'):
+                # Filter out the empty choice ('', '---------')
+                self.fields[field_name].choices = [
+                    choice for choice in self.fields[field_name].choices 
+                    if choice[0] != ''
+                ]
+    
+    class Meta:
+        model = Survey
+        fields = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10',
+                  'q11', 'q12', 'q13', 'q14', 'q15', 'q16', 'q17', 'q18', 'q19', 'q20_comment']
+        
+        widgets = {
+            'q1': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q2': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q3': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q4': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q5': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q6': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q7': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q8': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q9': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q10': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q11': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q12': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q13': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q14': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q15': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q16': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q17': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q18': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q19': forms.RadioSelect(attrs={'class': 'rating-radio'}),
+            'q20_comment': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 4,
+                'placeholder': _('Your comments (optional)')
+            }),
+        }
+        
+        labels = {
+            'q1': _('1. The instructor provided a clear syllabus on the first day of class which included a statement of the student learning outcomes for the course.'),
+            'q2': _('2. The instructor taught to the student learning outcomes as stated in the syllabus.'),
+            'q3': _('3. The instructor consistently arrived on time to class.'),
+            'q4': _('4. The instructor consistently dismissed class at the scheduled time.'),
+            'q5': _('5. The instructor was enthusiastic about the course content.'),
+            'q6': _('6. The instructor presented the material in an organized manner.'),
+            'q7': _('7. The instructor\'s method of delivery (lecture, discussion, group activities, email, etc.) was helpful in my learning the material.'),
+            'q8': _('8. The instructor used appropriate technology.'),
+            'q9': _('9. The instructor seemed to be highly knowledgeable about course content.'),
+            'q10': _('10. The instructor was accessible to students.'),
+            'q11': _('11. The instructor promoted student critical thinking.'),
+            'q12': _('12. The instructor encouraged students to explore opposing viewpoints.'),
+            'q13': _('13. The instructor exemplified SIUT\'s values of Honor, Freethinking, and Humanism.'),
+            'q14': _('14. The instructor exhibited a caring attitude toward students.'),
+            'q15': _('15. The tests were related to the student learning outcomes as stated in the syllabus.'),
+            'q16': _('16. Course assignments were useful to my learning experience.'),
+            'q17': _('17. The textbook (if applicable) was a useful tool in meeting the course outcome competencies.'),
+            'q18': _('18. The course required me to use learning resources (Library, tutor, other outside resources).'),
+            'q19': _('19. I had access to sufficient learning resources to meet the requirements of this course.'),
+            'q20_comment': _('20. Please write any comments below on what was helpful to your learning experience or what was not.'),
+        }
+
+
+class SurveyEditForm(forms.ModelForm):
+    """Form for editing survey responses in admin edit section"""
+    
+    class Meta:
+        model = Survey
+        fields = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8', 'q9', 'q10',
+                  'q11', 'q12', 'q13', 'q14', 'q15', 'q16', 'q17', 'q18', 'q19', 'q20_comment']
+        
+        widgets = {
+            'q1': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q2': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q3': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q4': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q5': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q6': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q7': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q8': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q9': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q10': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q11': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q12': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q13': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q14': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q15': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q16': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q17': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q18': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q19': forms.Select(attrs={'class': 'form-select form-select-sm'}),
+            'q20_comment': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 3
+            }),
+        }

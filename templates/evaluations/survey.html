@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load custom_filters %}
+
+{% block title %}{% trans "Evaluate Professor" %}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-2">{% trans "Professor Evaluation" %}</h2>
+        <p class="mb-0">{% trans "Group:" %} {{ group.group_name }}</p>
+    </div>
+    <div class="card-body p-4">
+        <!-- Progress Bar -->
+        <div class="mb-4">
+            <div class="d-flex justify-content-between mb-2">
+                <span><strong>{% trans "Progress:" %}</strong> {{ current_number }} / {{ total_professors }}</span>
+                <span>{{ progress_percentage|floatformat:0 }}%</span>
+            </div>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" 
+                     style="width: {{ progress_percentage }}%;" 
+                     aria-valuenow="{{ progress_percentage }}" 
+                     aria-valuemin="0" 
+                     aria-valuemax="100"></div>
+            </div>
+        </div>
+        
+        <!-- Professor Name -->
+        <div class="professor-name">
+            <h3 class="mb-1">{{ professor.full_name }}</h3>
+            <p class="text-muted mb-0">{{ professor.school }}</p>
+        </div>
+        
+        <form method="post">
+            {% csrf_token %}
+            
+            <!-- Dynamic Questions -->
+            {% for question in questions %}
+                {% with field_name='question_'|add:question.id|stringformat:"s" %}
+                <div class="rating-container">
+                    <div class="question-text">{{ question.get_text }}</div>
+                    
+                    {% if question.question_type == 'rating' %}
+                        <!-- Rating Question (1-6) -->
+                        <div class="rating-radio">
+                            <input type="radio" 
+                                   id="question_{{ question.id }}_1" 
+                                   name="question_{{ question.id }}" 
+                                   value="1"
+                                   required>
+                            <label for="question_{{ question.id }}_1">{% trans "Strongly Agree" %}</label>
+                            
+                            <input type="radio" 
+                                   id="question_{{ question.id }}_2" 
+                                   name="question_{{ question.id }}" 
+                                   value="2"
+                                   required>
+                            <label for="question_{{ question.id }}_2">{% trans "Agree" %}</label>
+                            
+                            <input type="radio" 
+                                   id="question_{{ question.id }}_3" 
+                                   name="question_{{ question.id }}" 
+                                   value="3"
+                                   required>
+                            <label for="question_{{ question.id }}_3">{% trans "Neither Agree nor Disagree" %}</label>
+                            
+                            <input type="radio" 
+                                   id="question_{{ question.id }}_4" 
+                                   name="question_{{ question.id }}" 
+                                   value="4"
+                                   required>
+                            <label for="question_{{ question.id }}_4">{% trans "Disagree" %}</label>
+                            
+                            <input type="radio" 
+                                   id="question_{{ question.id }}_5" 
+                                   name="question_{{ question.id }}" 
+                                   value="5"
+                                   required>
+                            <label for="question_{{ question.id }}_5">{% trans "Strongly Disagree" %}</label>
+                            
+                            <input type="radio" 
+                                   id="question_{{ question.id }}_6" 
+                                   name="question_{{ question.id }}" 
+                                   value="6"
+                                   required>
+                            <label for="question_{{ question.id }}_6">{% trans "Not Applicable" %}</label>
+                        </div>
+                    {% elif question.question_type == 'text' %}
+                        <!-- Text Question -->
+                        <textarea class="form-control" 
+                                  id="question_{{ question.id }}" 
+                                  name="question_{{ question.id }}" 
+                                  rows="4" 
+                                  placeholder="{% trans 'Enter your response...' %}"></textarea>
+                    {% endif %}
+                    
+                    {% if form.errors|get_item:field_name %}
+                        <div class="text-danger mt-2">{{ form.errors|get_item:field_name }}</div>
+                    {% endif %}
+                </div>
+                {% endwith %}
+            {% endfor %}
+            
+            <!-- Action Buttons -->
+            <div class="d-flex flex-column flex-md-row gap-3 justify-content-between mt-4">
+                <button type="submit" name="skip_professor" class="btn btn-secondary btn-lg">
+                    {% trans "This is not my professor" %}
+                </button>
+                <button type="submit" class="btn btn-primary btn-lg">
+                    {% trans "Submit Evaluation" %} →
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Scroll to first unanswered question on validation error
+    document.addEventListener('DOMContentLoaded', function() {
+        const errorElement = document.querySelector('.text-danger');
+        if (errorElement) {
+            errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    });
+</script>
+{% endblock %}

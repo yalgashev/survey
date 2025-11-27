@@ -1,0 +1,99 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+{% load custom_filters %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <h1>{% trans "Analytics for" %} {{ professor.full_name }}</h1>
+    <p class="lead">{{ professor.school }}</p>
+    
+    <hr>
+    
+    {% for group_data in groups_data %}
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h3>{{ group_data.group.group_name }}</h3>
+                <p class="mb-0">
+                    {% trans "Total Surveys:" %} {{ group_data.survey_count }}
+                    {% if group_data.overall_average %}
+                        | {% trans "Overall Average:" %} 
+                        <strong>{{ group_data.overall_average }}</strong>
+                    {% endif %}
+                </p>
+            </div>
+            <div class="card-body">
+                <h5>{% trans "Question Averages" %}</h5>
+                <div class="table-responsive">
+                    <table class="table table-sm table-striped">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Question" %}</th>
+                                <th>{% trans "Average" %}</th>
+                                <th style="width: 50%;">{% trans "Visual" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in "123456789012345678901234567890"|make_list %}
+                                {% if forloop.counter <= 19 %}
+                                    {% with q_key="q"|add:forloop.counter|stringformat:"s" %}
+                                        <tr>
+                                            <td><strong>Q{{ forloop.counter }}</strong></td>
+                                            <td>
+                                                {% with avg=group_data.question_averages|get_item:q_key %}
+                                                    {% if avg %}
+                                                        <span class="badge bg-{% if avg <= 2 %}success{% elif avg <= 3.5 %}warning{% else %}danger{% endif %}">
+                                                            {{ avg }}
+                                                        </span>
+                                                    {% else %}
+                                                        N/A
+                                                    {% endif %}
+                                                {% endwith %}
+                                            </td>
+                                            <td>
+                                                {% with avg=group_data.question_averages|get_item:q_key %}
+                                                    {% if avg %}
+                                                        <div class="progress">
+                                                            <div class="progress-bar bg-{% if avg <= 2 %}success{% elif avg <= 3.5 %}warning{% else %}danger{% endif %}" 
+                                                                 style="width: {{ avg|multiply:20 }}%">
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                {% endwith %}
+                                            </td>
+                                        </tr>
+                                    {% endwith %}
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                
+                {% if group_data.comments %}
+                    <h5 class="mt-4">{% trans "Student Comments" %}</h5>
+                    <div class="list-group">
+                        {% for comment in group_data.comments %}
+                            <div class="list-group-item">
+                                {{ comment }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% empty %}
+        <div class="alert alert-info">
+            {% trans "No survey data available for this professor yet." %}
+        </div>
+    {% endfor %}
+    
+    <a href="{% url 'admin:evaluations_professor_changelist' %}" class="btn btn-secondary">
+        {% trans "Back to Professor List" %}
+    </a>
+</div>
+
+<style>
+    .progress {
+        height: 20px;
+    }
+</style>
+{% endblock %}

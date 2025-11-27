@@ -1,0 +1,189 @@
+{% extends "admin_custom/base.html" %}
+{% load i18n %}
+
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="stat-card blue">
+            <h3>{{ total_surveys }}</h3>
+            <p><i class="fas fa-poll"></i> Total Surveys</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card green">
+            <h3>{{ total_groups }}</h3>
+            <p><i class="fas fa-users"></i> Academic Groups</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card yellow">
+            <h3>{{ total_professors }}</h3>
+            <p><i class="fas fa-chalkboard-teacher"></i> Professors</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="stat-card purple">
+            <h3>{{ recent_surveys }}</h3>
+            <p><i class="fas fa-chart-line"></i> Last 7 Days</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card-custom">
+            <div class="card-header">
+                <i class="fas fa-star"></i> Top Rated Professors
+            </div>
+            <div class="card-body">
+                {% if top_professors %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Professor</th>
+                                    <th>School</th>
+                                    <th>Surveys</th>
+                                    <th>Average Rating</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for prof in top_professors %}
+                                <tr>
+                                    <td><strong>{{ prof.name }}</strong></td>
+                                    <td>{{ prof.school }}</td>
+                                    <td>{{ prof.count }}</td>
+                                    <td>
+                                        <span class="badge-rating {% if prof.rating <= 2 %}badge-excellent{% elif prof.rating <= 3 %}badge-good{% elif prof.rating <= 4 %}badge-average{% else %}badge-poor{% endif %}">
+                                            {{ prof.rating }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="{% url 'admin_professor_analytics' prof.id %}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-chart-bar"></i> Analytics
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted">No survey data available yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card-custom">
+            <div class="card-header">
+                <i class="fas fa-history"></i> Recent Activity
+            </div>
+            <div class="card-body">
+                {% if recent_activity %}
+                    <div style="max-height: 400px; overflow-y: auto;">
+                        {% for survey in recent_activity %}
+                        <div class="mb-3 pb-3 border-bottom">
+                            <div><strong>{{ survey.group.group_name }}</strong></div>
+                            <div class="text-muted small">
+                                evaluated <strong>{{ survey.professor.full_name }}</strong>
+                            </div>
+                            <div class="text-muted small">
+                                <i class="fas fa-clock"></i> {{ survey.created_at|timesince }} ago
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-muted">No recent activity.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-custom">
+            <div class="card-header">
+                <i class="fas fa-chart-pie"></i> Group Participation
+            </div>
+            <div class="card-body">
+                {% if groups_data %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Group Name</th>
+                                    <th>Department</th>
+                                    <th>Participated</th>
+                                    <th>Total Students</th>
+                                    <th>Participation Rate</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for group in groups_data %}
+                                <tr>
+                                    <td><strong>{{ group.name }}</strong></td>
+                                    <td>{{ group.department }}</td>
+                                    <td>{{ group.participated }}</td>
+                                    <td>{{ group.total }}</td>
+                                    <td>
+                                        <div class="progress" style="height: 25px;">
+                                            <div class="progress-bar {% if group.rate >= 70 %}bg-success{% elif group.rate >= 50 %}bg-warning{% else %}bg-danger{% endif %}" 
+                                                 style="width: {{ group.rate }}%">
+                                                {{ group.rate }}%
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <p class="text-muted">No groups available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="card-custom">
+            <div class="card-header">
+                <i class="fas fa-rocket"></i> Quick Actions
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <a href="{% url 'admin_group_add' %}" class="btn btn-primary w-100">
+                            <i class="fas fa-plus"></i> Add Group
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <a href="{% url 'admin_professor_add' %}" class="btn btn-primary w-100">
+                            <i class="fas fa-plus"></i> Add Professor
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <a href="{% url 'admin_assignment_add' %}" class="btn btn-primary w-100">
+                            <i class="fas fa-link"></i> Assign Professor
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <a href="{% url 'admin_surveys_list' %}" class="btn btn-primary w-100">
+                            <i class="fas fa-list"></i> View All Surveys
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

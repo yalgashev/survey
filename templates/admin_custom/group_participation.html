@@ -1,0 +1,110 @@
+{% extends "admin_custom/base.html" %}
+{% load i18n %}
+
+{% block page_title %}Group Participation{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="fas fa-chart-bar"></i> Group Participation Statistics</h2>
+</div>
+
+<!-- Overall Statistics Card -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">Total Students</h5>
+                <h2 class="mb-0">{{ total_students }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">Participated</h5>
+                <h2 class="mb-0">{{ total_participated }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h5 class="card-title">Overall Rate</h5>
+                <h2 class="mb-0">{{ overall_rate|floatformat:1 }}%</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Group Statistics Table -->
+<div class="card-custom">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Group Name</th>
+                        <th>Department</th>
+                        <th>Semester</th>
+                        <th class="text-center">Total Students</th>
+                        <th class="text-center">Participated</th>
+                        <th class="text-center">Remaining</th>
+                        <th class="text-center">Participation Rate</th>
+                        <th class="text-center">Progress</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stat in group_stats %}
+                    <tr>
+                        <td><strong>{{ stat.group.group_name }}</strong></td>
+                        <td>{{ stat.group.department.name }}</td>
+                        <td>
+                            <span class="badge bg-info text-white">Semester {{ stat.group.semester }}</span>
+                        </td>
+                        <td class="text-center">{{ stat.total }}</td>
+                        <td class="text-center">
+                            <span class="badge bg-success">{{ stat.participated }}</span>
+                        </td>
+                        <td class="text-center">
+                            <span class="badge bg-warning text-dark">{{ stat.total|add:"-"|add:stat.participated }}</span>
+                        </td>
+                        <td class="text-center">
+                            <strong class="{% if stat.rate >= 80 %}text-success{% elif stat.rate >= 50 %}text-warning{% else %}text-danger{% endif %}">
+                                {{ stat.rate|floatformat:1 }}%
+                            </strong>
+                        </td>
+                        <td>
+                            <div class="progress" style="height: 25px;">
+                                <div class="progress-bar {% if stat.rate >= 80 %}bg-success{% elif stat.rate >= 50 %}bg-warning{% else %}bg-danger{% endif %}" 
+                                     role="progressbar" 
+                                     style="width: {{ stat.rate }}%;" 
+                                     aria-valuenow="{{ stat.rate }}" 
+                                     aria-valuemin="0" 
+                                     aria-valuemax="100">
+                                    {{ stat.rate|floatformat:0 }}%
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center text-muted">No groups found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Legend -->
+<div class="mt-3">
+    <p class="text-muted">
+        <i class="fas fa-info-circle"></i>
+        <strong>Color Guide:</strong>
+        <span class="text-success ms-2"><i class="fas fa-circle"></i> ≥80% - Excellent</span>
+        <span class="text-warning ms-2"><i class="fas fa-circle"></i> 50-79% - Good</span>
+        <span class="text-danger ms-2"><i class="fas fa-circle"></i> &lt;50% - Needs Attention</span>
+    </p>
+</div>
+{% endblock %}

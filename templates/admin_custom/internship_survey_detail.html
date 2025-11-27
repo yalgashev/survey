@@ -1,0 +1,74 @@
+{% extends "admin_custom/base.html" %}
+{% load i18n %}
+
+{% block page_title %}Internship Survey Detail{% endblock %}
+
+{% block content %}
+<div class="mb-4">
+    <a href="{% url 'admin_internship_surveys_list' %}" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Back to Internship Surveys
+    </a>
+</div>
+
+<div class="card-custom">
+    <div class="card-header">
+        <h4><i class="fas fa-briefcase"></i> Internship Survey #{{ survey.id }}</h4>
+    </div>
+    <div class="card-body">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <p><strong>Group:</strong> {{ survey.group.group_name }}</p>
+                <p><strong>Semester:</strong> <span class="badge bg-info text-white">Semester {{ survey.group.semester }}</span></p>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Date:</strong> {{ survey.created_at|date:"Y-m-d H:i:s" }}</p>
+                <p><strong>Average Rating:</strong> 
+                    {% with avg=average_rating %}
+                        {% if avg > 0 %}
+                            <span class="badge-rating {% if avg <= 2 %}badge-excellent{% elif avg <= 3 %}badge-good{% elif avg <= 4 %}badge-average{% else %}badge-poor{% endif %}">
+                                {{ avg|floatformat:2 }}
+                            </span>
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    {% endwith %}
+                </p>
+            </div>
+        </div>
+        
+        <h5>Responses</h5>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Question</th>
+                        <th>Response</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in question_data %}
+                    <tr>
+                        <td><strong>{{ item.question }}</strong></td>
+                        <td>
+                            {% if item.type == 'rating' %}
+                                <span class="badge-rating {% if item.value == 1 or item.value == 2 %}badge-excellent{% elif item.value == 3 %}badge-good{% elif item.value == 4 or item.value == 5 %}badge-poor{% else %}bg-secondary text-white{% endif %}">
+                                    {{ item.value }} - {{ item.text }}
+                                </span>
+                            {% else %}
+                                <div class="alert alert-info mb-0">
+                                    <i class="fas fa-comment"></i> {{ item.text }}
+                                </div>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="2" class="text-center text-muted">No responses found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

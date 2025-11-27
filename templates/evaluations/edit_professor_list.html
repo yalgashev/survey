@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Edit Surveys" %}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-0">{% trans "Select Professor to Edit Surveys" %}</h2>
+    </div>
+    <div class="card-body p-4">
+        <div class="alert alert-warning">
+            <strong>{% trans "Admin Section" %}</strong> - 
+            {% trans "This area is for authorized personnel only. Select a professor to view and edit their survey responses." %}
+        </div>
+        
+        <div class="list-group">
+            {% for professor in professors %}
+                <a href="{% url 'edit_professor_surveys' professor.id %}" 
+                   class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ professor.full_name }}</h5>
+                        <small>{{ professor.school }}</small>
+                    </div>
+                    <small class="text-muted">
+                        {% trans "Click to view and edit surveys" %}
+                    </small>
+                </a>
+            {% empty %}
+                <div class="alert alert-info">
+                    {% trans "No professors found." %}
+                </div>
+            {% endfor %}
+        </div>
+        
+        <div class="mt-4">
+            <a href="{% url 'home' %}" class="btn btn-secondary">
+                {% trans "Back to Home" %}
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

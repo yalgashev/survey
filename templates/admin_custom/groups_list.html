@@ -1,0 +1,65 @@
+{% extends "admin_custom/base.html" %}
+{% load i18n %}
+
+{% block page_title %}Groups{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="fas fa-users"></i> Groups</h2>
+    <a href="{% url 'admin_group_add' %}" class="btn btn-primary">
+        <i class="fas fa-plus"></i> Add Group
+    </a>
+</div>
+
+<div class="card-custom">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Group Name</th>
+                        <th>Department</th>
+                        <th>Semester</th>
+                        <th>Total Students</th>
+                        <th>Participated</th>
+                        <th>Participation Rate</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for group in groups %}
+                    <tr>
+                        <td><strong>{{ group.group_name }}</strong></td>
+                        <td>{{ group.department }}</td>
+                        <td>
+                            <span class="badge bg-info text-white">Semester {{ group.semester }}</span>
+                        </td>
+                        <td>{{ group.total_students }}</td>
+                        <td>{{ group.participated_students }}</td>
+                        <td>
+                            {% if group.total_students > 0 %}
+                                {% widthratio group.participated_students group.total_students 100 %}%
+                            {% else %}
+                                0%
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{% url 'admin_group_edit' group.id %}" class="btn btn-sm btn-warning">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                            <a href="{% url 'admin_group_delete' group.id %}" class="btn btn-sm btn-danger">
+                                <i class="fas fa-trash"></i> Delete
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" class="text-center text-muted">No groups found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

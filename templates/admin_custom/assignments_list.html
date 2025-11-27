@@ -1,0 +1,56 @@
+{% extends "admin_custom/base.html" %}
+{% load i18n %}
+
+{% block page_title %}Assignments{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="fas fa-link"></i> Professor-Group Assignments</h2>
+    <a href="{% url 'admin_assignment_add' %}" class="btn btn-primary">
+        <i class="fas fa-plus"></i> Manage Assignments
+    </a>
+</div>
+
+<div class="card-custom">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Professor</th>
+                        <th>School</th>
+                        <th>Assigned Groups</th>
+                        <th>Total Groups</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% regroup assignments by professor as professor_list %}
+                    {% for professor_group in professor_list %}
+                    <tr>
+                        <td><strong>{{ professor_group.grouper.full_name }}</strong></td>
+                        <td>{{ professor_group.grouper.school }}</td>
+                        <td>
+                            {% for assignment in professor_group.list %}
+                                <span class="badge bg-primary me-1">{{ assignment.group.group_name }}</span>
+                            {% endfor %}
+                        </td>
+                        <td><span class="badge bg-secondary">{{ professor_group.list|length }}</span></td>
+                        <td>
+                            <a href="{% url 'admin_assignment_add' %}?professor={{ professor_group.grouper.id }}" 
+                               class="btn btn-sm btn-warning">
+                                <i class="fas fa-edit"></i> Edit
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5" class="text-center text-muted">No assignments found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

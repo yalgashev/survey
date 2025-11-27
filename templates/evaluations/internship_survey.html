@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load custom_filters %}
+
+{% block title %}{% trans "Internship Evaluation" %}{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2 class="mb-2"><i class="fas fa-briefcase"></i> {% trans "Internship Evaluation" %}</h2>
+        <p class="mb-0">{% trans "Group:" %} {{ group.group_name }} (Semester {{ group.semester }})</p>
+    </div>
+    <div class="card-body p-4">
+        <div class="alert alert-info mb-4">
+            <i class="fas fa-info-circle"></i>
+            {% trans "Please evaluate your November internship experience by answering the following questions." %}
+        </div>
+        
+        <form method="post">
+            {% csrf_token %}
+            
+            <!-- Dynamic Questions -->
+            {% for question in questions %}
+                {% with field_name='question_'|add:question.id|stringformat:"s" %}
+                <div class="rating-container">
+                    <div class="question-text">{{ question.get_text }}</div>
+                    
+                    {% if question.question_type == 'rating' %}
+                        <!-- Rating Question (1-6) -->
+                        <div class="rating-radio">
+                            <input type="radio" 
+                                   id="question_{{ question.id }}_1" 
+                                   name="question_{{ question.id }}" 
+                                   value="1"
+                                   required>
+                            <label for="question_{{ question.id }}_1">{% trans "Strongly Agree" %}</label>
+                            
+                            <input type="radio" 
+                                   id="question_{{ question.id }}_2" 
+                                   name="question_{{ question.id }}" 
+                                   value="2"
+                                   required>
+                            <label for="question_{{ question.id }}_2">{% trans "Agree" %}</label>
+                            
+                            <input type="radio" 
+                                   id="question_{{ question.id }}_3" 
+                                   name="question_{{ question.id }}" 
+                                   value="3"
+                                   required>
+                            <label for="question_{{ question.id }}_3">{% trans "Neither Agree nor Disagree" %}</label>
+                            
+                            <input type="radio" 
+                                   id="question_{{ question.id }}_4" 
+                                   name="question_{{ question.id }}" 
+                                   value="4"
+                                   required>
+                            <label for="question_{{ question.id }}_4">{% trans "Disagree" %}</label>
+                            
+                            <input type="radio" 
+                                   id="question_{{ question.id }}_5" 
+                                   name="question_{{ question.id }}" 
+                                   value="5"
+                                   required>
+                            <label for="question_{{ question.id }}_5">{% trans "Strongly Disagree" %}</label>
+                            
+                            <input type="radio" 
+                                   id="question_{{ question.id }}_6" 
+                                   name="question_{{ question.id }}" 
+                                   value="6"
+                                   required>
+                            <label for="question_{{ question.id }}_6">{% trans "Not Applicable" %}</label>
+                        </div>
+                    {% elif question.question_type == 'text' %}
+                        <!-- Text Question -->
+                        <textarea class="form-control" 
+                                  id="question_{{ question.id }}" 
+                                  name="question_{{ question.id }}" 
+                                  rows="4" 
+                                  placeholder="{% trans 'Enter your response...' %}"></textarea>
+                    {% endif %}
+                    
+                    {% if form.errors|get_item:field_name %}
+                        <div class="text-danger mt-2">{{ form.errors|get_item:field_name }}</div>
+                    {% endif %}
+                </div>
+                {% endwith %}
+            {% endfor %}
+            
+            <!-- Submit Button -->
+            <div class="d-flex justify-content-end mt-4">
+                <button type="submit" class="btn btn-primary btn-lg">
+                    <i class="fas fa-check"></i> {% trans "Submit Evaluation" %} →
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Scroll to first unanswered question on validation error
+    document.addEventListener('DOMContentLoaded', function() {
+        const errorElement = document.querySelector('.text-danger');
+        if (errorElement) {
+            errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    });
+</script>
+{% endblock %}
