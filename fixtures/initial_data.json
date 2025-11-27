@@ -1,0 +1,3257 @@
+[
+{
+  "model": "evaluations.school",
+  "pk": 1,
+  "fields": {
+    "name": "Default University",
+    "code": "DEFAULT",
+    "description": "Default school for migration",
+    "created_at": "2025-11-22T13:02:08.792Z",
+    "updated_at": "2025-11-22T13:02:08.792Z"
+  }
+},
+{
+  "model": "evaluations.school",
+  "pk": 4,
+  "fields": {
+    "name": "School of Engineering",
+    "code": "SE",
+    "description": "",
+    "created_at": "2025-11-18T16:53:45.491Z",
+    "updated_at": "2025-11-18T16:53:45.491Z"
+  }
+},
+{
+  "model": "evaluations.school",
+  "pk": 5,
+  "fields": {
+    "name": "Chinese Institute of Electric Power",
+    "code": "CIEP",
+    "description": "",
+    "created_at": "2025-11-18T16:54:03.001Z",
+    "updated_at": "2025-11-18T16:54:03.001Z"
+  }
+},
+{
+  "model": "evaluations.school",
+  "pk": 6,
+  "fields": {
+    "name": "Korean Institute of Technology and Culture",
+    "code": "KITC",
+    "description": "",
+    "created_at": "2025-11-18T16:54:14.206Z",
+    "updated_at": "2025-11-18T16:54:14.206Z"
+  }
+},
+{
+  "model": "evaluations.school",
+  "pk": 7,
+  "fields": {
+    "name": "French Higher School of Engineering and Commerce",
+    "code": "FHSEC",
+    "description": "",
+    "created_at": "2025-11-18T16:54:36.680Z",
+    "updated_at": "2025-11-18T16:54:36.680Z"
+  }
+},
+{
+  "model": "evaluations.school",
+  "pk": 8,
+  "fields": {
+    "name": "School of Computing",
+    "code": "SC",
+    "description": "",
+    "created_at": "2025-11-18T16:54:46.842Z",
+    "updated_at": "2025-11-18T16:54:46.842Z"
+  }
+},
+{
+  "model": "evaluations.school",
+  "pk": 9,
+  "fields": {
+    "name": "Business School",
+    "code": "BS",
+    "description": "",
+    "created_at": "2025-11-18T16:55:00.126Z",
+    "updated_at": "2025-11-18T16:55:00.126Z"
+  }
+},
+{
+  "model": "evaluations.school",
+  "pk": 10,
+  "fields": {
+    "name": "Languages",
+    "code": "L",
+    "description": "",
+    "created_at": "2025-11-19T05:02:53.854Z",
+    "updated_at": "2025-11-19T05:02:53.854Z"
+  }
+},
+{
+  "model": "evaluations.school",
+  "pk": 11,
+  "fields": {
+    "name": "Korean Language",
+    "code": "KL",
+    "description": "",
+    "created_at": "2025-11-19T05:03:47.694Z",
+    "updated_at": "2025-11-19T05:03:47.694Z"
+  }
+},
+{
+  "model": "evaluations.school",
+  "pk": 12,
+  "fields": {
+    "name": "Mathematics",
+    "code": "Math",
+    "description": "",
+    "created_at": "2025-11-19T05:04:56.816Z",
+    "updated_at": "2025-11-19T05:04:56.816Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 15,
+  "fields": {
+    "school": 9,
+    "name": "Entrepreneurship and Management",
+    "code": "BBA",
+    "description": "",
+    "created_at": "2025-11-18T16:55:21.963Z",
+    "updated_at": "2025-11-18T16:55:21.963Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 16,
+  "fields": {
+    "school": 9,
+    "name": "International Logistics",
+    "code": "IL",
+    "description": "",
+    "created_at": "2025-11-18T16:55:35.410Z",
+    "updated_at": "2025-11-18T16:55:35.410Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 17,
+  "fields": {
+    "school": 5,
+    "name": "Energy and Power Engineering",
+    "code": "EPE",
+    "description": "",
+    "created_at": "2025-11-18T19:01:20.750Z",
+    "updated_at": "2025-11-18T19:01:20.750Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 18,
+  "fields": {
+    "school": 7,
+    "name": "Entrepreneurship and Management",
+    "code": "FBBA",
+    "description": "",
+    "created_at": "2025-11-18T19:01:43.612Z",
+    "updated_at": "2025-11-18T19:01:43.612Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 19,
+  "fields": {
+    "school": 6,
+    "name": "Design",
+    "code": "D",
+    "description": "",
+    "created_at": "2025-11-18T19:02:02.422Z",
+    "updated_at": "2025-11-18T19:02:02.422Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 20,
+  "fields": {
+    "school": 6,
+    "name": "Digital Economy",
+    "code": "DE",
+    "description": "",
+    "created_at": "2025-11-18T19:02:17.430Z",
+    "updated_at": "2025-11-18T19:02:17.430Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 21,
+  "fields": {
+    "school": 6,
+    "name": "Renewable Energy",
+    "code": "RE",
+    "description": "",
+    "created_at": "2025-11-18T19:02:32.429Z",
+    "updated_at": "2025-11-18T19:02:32.429Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 22,
+  "fields": {
+    "school": 8,
+    "name": "Artificial Intelligence",
+    "code": "AI",
+    "description": "",
+    "created_at": "2025-11-18T19:03:04.961Z",
+    "updated_at": "2025-11-18T19:03:04.961Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 23,
+  "fields": {
+    "school": 8,
+    "name": "Computer Science",
+    "code": "CS",
+    "description": "",
+    "created_at": "2025-11-18T19:03:22.908Z",
+    "updated_at": "2025-11-18T19:03:22.908Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 24,
+  "fields": {
+    "school": 8,
+    "name": "Cyber Security",
+    "code": "CybS",
+    "description": "",
+    "created_at": "2025-11-18T19:03:40.195Z",
+    "updated_at": "2025-11-18T19:03:53.619Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 25,
+  "fields": {
+    "school": 4,
+    "name": "Chemical Engineering",
+    "code": "CHE",
+    "description": "",
+    "created_at": "2025-11-18T19:04:17.413Z",
+    "updated_at": "2025-11-18T19:04:17.413Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 26,
+  "fields": {
+    "school": 4,
+    "name": "Geological Engineering",
+    "code": "GE",
+    "description": "",
+    "created_at": "2025-11-18T19:04:36.055Z",
+    "updated_at": "2025-11-18T19:04:36.055Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 27,
+  "fields": {
+    "school": 4,
+    "name": "Mining",
+    "code": "M",
+    "description": "",
+    "created_at": "2025-11-18T19:04:47.940Z",
+    "updated_at": "2025-11-18T19:04:47.940Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 28,
+  "fields": {
+    "school": 4,
+    "name": "Petroleum Engineering",
+    "code": "PE",
+    "description": "",
+    "created_at": "2025-11-18T19:05:03.108Z",
+    "updated_at": "2025-11-18T19:05:03.108Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 29,
+  "fields": {
+    "school": 10,
+    "name": "Languages",
+    "code": "L",
+    "description": "",
+    "created_at": "2025-11-19T05:03:07.746Z",
+    "updated_at": "2025-11-19T05:03:07.746Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 30,
+  "fields": {
+    "school": 11,
+    "name": "Korean Language",
+    "code": "KL",
+    "description": "",
+    "created_at": "2025-11-19T05:04:04.511Z",
+    "updated_at": "2025-11-19T09:45:32.139Z"
+  }
+},
+{
+  "model": "evaluations.department",
+  "pk": 31,
+  "fields": {
+    "school": 12,
+    "name": "Mathematics",
+    "code": "Math",
+    "description": "",
+    "created_at": "2025-11-19T05:05:13.878Z",
+    "updated_at": "2025-11-19T05:05:13.878Z"
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 4,
+  "fields": {
+    "group_name": "AI-01-25",
+    "department": 22,
+    "semester": 1,
+    "total_students": 11,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 5,
+  "fields": {
+    "group_name": "BBA-01-23",
+    "department": 15,
+    "semester": 6,
+    "total_students": 13,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 6,
+  "fields": {
+    "group_name": "BBA-01-24",
+    "department": 15,
+    "semester": 3,
+    "total_students": 22,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 7,
+  "fields": {
+    "group_name": "BBA-01-25",
+    "department": 15,
+    "semester": 1,
+    "total_students": 15,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 8,
+  "fields": {
+    "group_name": "BBA-02-23",
+    "department": 15,
+    "semester": 5,
+    "total_students": 24,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 9,
+  "fields": {
+    "group_name": "CHE-01-23",
+    "department": 25,
+    "semester": 5,
+    "total_students": 5,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 10,
+  "fields": {
+    "group_name": "CS-01-23",
+    "department": 23,
+    "semester": 6,
+    "total_students": 11,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 11,
+  "fields": {
+    "group_name": "CS-01-24",
+    "department": 23,
+    "semester": 3,
+    "total_students": 14,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 12,
+  "fields": {
+    "group_name": "CS-01-25",
+    "department": 24,
+    "semester": 1,
+    "total_students": 21,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 13,
+  "fields": {
+    "group_name": "CS-02-23",
+    "department": 23,
+    "semester": 5,
+    "total_students": 15,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 14,
+  "fields": {
+    "group_name": "D-01-23",
+    "department": 19,
+    "semester": 4,
+    "total_students": 20,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 15,
+  "fields": {
+    "group_name": "D-01-24",
+    "department": 19,
+    "semester": 4,
+    "total_students": 19,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 16,
+  "fields": {
+    "group_name": "D-01-25",
+    "department": 19,
+    "semester": 1,
+    "total_students": 15,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 17,
+  "fields": {
+    "group_name": "DE-01-23",
+    "department": 20,
+    "semester": 4,
+    "total_students": 17,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 18,
+  "fields": {
+    "group_name": "DE-01-24",
+    "department": 20,
+    "semester": 4,
+    "total_students": 12,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 19,
+  "fields": {
+    "group_name": "DE-01-25",
+    "department": 20,
+    "semester": 1,
+    "total_students": 13,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 20,
+  "fields": {
+    "group_name": "EPE-01-24",
+    "department": 17,
+    "semester": 4,
+    "total_students": 18,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 21,
+  "fields": {
+    "group_name": "EPE-01-25",
+    "department": 17,
+    "semester": 1,
+    "total_students": 24,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 22,
+  "fields": {
+    "group_name": "FBBA-01-25",
+    "department": 18,
+    "semester": 1,
+    "total_students": 20,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 23,
+  "fields": {
+    "group_name": "GE-01-23",
+    "department": 26,
+    "semester": 4,
+    "total_students": 5,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 24,
+  "fields": {
+    "group_name": "IL-01-23",
+    "department": 16,
+    "semester": 4,
+    "total_students": 18,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 25,
+  "fields": {
+    "group_name": "IL-01-24",
+    "department": 16,
+    "semester": 5,
+    "total_students": 13,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 26,
+  "fields": {
+    "group_name": "IL-01-25",
+    "department": 16,
+    "semester": 1,
+    "total_students": 5,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 27,
+  "fields": {
+    "group_name": "M-01-23",
+    "department": 27,
+    "semester": 4,
+    "total_students": 5,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 28,
+  "fields": {
+    "group_name": "M-01-24",
+    "department": 27,
+    "semester": 4,
+    "total_students": 18,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 29,
+  "fields": {
+    "group_name": "PE-01-23",
+    "department": 28,
+    "semester": 4,
+    "total_students": 15,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 30,
+  "fields": {
+    "group_name": "PE-01-24",
+    "department": 28,
+    "semester": 4,
+    "total_students": 34,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 31,
+  "fields": {
+    "group_name": "PE-01-25",
+    "department": 28,
+    "semester": 1,
+    "total_students": 10,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 32,
+  "fields": {
+    "group_name": "RE-01-23",
+    "department": 21,
+    "semester": 4,
+    "total_students": 11,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.group",
+  "pk": 33,
+  "fields": {
+    "group_name": "RE-01-24",
+    "department": 21,
+    "semester": 4,
+    "total_students": 11,
+    "participated_students": 0
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 5,
+  "fields": {
+    "full_name": "ABBAS JAFAR",
+    "school": 8,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 6,
+  "fields": {
+    "full_name": "ABDULLAYEVA KOMILA TIMUROVNA",
+    "school": 10,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 7,
+  "fields": {
+    "full_name": "ABROROVA NILUFAR",
+    "school": 11,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 8,
+  "fields": {
+    "full_name": "ABUTALIPOV MARS FUATOVICH",
+    "school": 12,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 9,
+  "fields": {
+    "full_name": "ALLAYEV SHERZOD BOTIROVICH",
+    "school": 4,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 10,
+  "fields": {
+    "full_name": "ARYA PRADIPTA PRASETYO",
+    "school": 4,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 11,
+  "fields": {
+    "full_name": "ASHUROVA ZAMIRA OSLONOVNA",
+    "school": 9,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 12,
+  "fields": {
+    "full_name": "ATAILAEVA DILFUZA",
+    "school": 7,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 13,
+  "fields": {
+    "full_name": "AVINASH BONDU",
+    "school": 9,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 14,
+  "fields": {
+    "full_name": "BAE HYESEONG",
+    "school": 11,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 15,
+  "fields": {
+    "full_name": "BAHRAMI MOHAMMAD REZA",
+    "school": 4,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 16,
+  "fields": {
+    "full_name": "BASSON ANNEMARIE",
+    "school": 10,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 17,
+  "fields": {
+    "full_name": "BERNARDO JEFFREY MORANTE",
+    "school": 9,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 18,
+  "fields": {
+    "full_name": "CHO JEONG HWAN",
+    "school": 4,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 19,
+  "fields": {
+    "full_name": "DANILOV SERGEY VIKTOROVICH",
+    "school": 7,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 20,
+  "fields": {
+    "full_name": "DUJARRIC FLORENCE",
+    "school": 7,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 21,
+  "fields": {
+    "full_name": "EMBAG ERIC SEGUNDO",
+    "school": 9,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 22,
+  "fields": {
+    "full_name": "EVANS O`QUINN WESLEY",
+    "school": 8,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 23,
+  "fields": {
+    "full_name": "FARKHODOV JAKHONGIR",
+    "school": 11,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 24,
+  "fields": {
+    "full_name": "FITZGERALD BRADLEY JACOB",
+    "school": 4,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 25,
+  "fields": {
+    "full_name": "FRANKEN JUANITA",
+    "school": 10,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 26,
+  "fields": {
+    "full_name": "GALETY MOHAMMAD GOUSE",
+    "school": 8,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 27,
+  "fields": {
+    "full_name": "HOLMUHAMEDOV EKHSON",
+    "school": 12,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 28,
+  "fields": {
+    "full_name": "HUSSAIN IJAZ",
+    "school": 4,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 29,
+  "fields": {
+    "full_name": "IBRAGIMOVA RAISA",
+    "school": 7,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 30,
+  "fields": {
+    "full_name": "JEELANI ZUBAIR",
+    "school": 8,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 31,
+  "fields": {
+    "full_name": "JIMBO HENRI CLAVER",
+    "school": 12,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 32,
+  "fields": {
+    "full_name": "JO YUNHYE",
+    "school": 11,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 33,
+  "fields": {
+    "full_name": "JUNG YOUNGHUN",
+    "school": 6,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 34,
+  "fields": {
+    "full_name": "KIM EUNBIT",
+    "school": 11,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 35,
+  "fields": {
+    "full_name": "KIM HANMIN",
+    "school": 6,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 36,
+  "fields": {
+    "full_name": "KIM HOIK",
+    "school": 6,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 37,
+  "fields": {
+    "full_name": "KIM IN TAE",
+    "school": 11,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 38,
+  "fields": {
+    "full_name": "KIM JUNG YONG",
+    "school": 6,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 39,
+  "fields": {
+    "full_name": "KODIROVA SHAXNOZA ABDURAXMONOVNA",
+    "school": 10,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 40,
+  "fields": {
+    "full_name": "KOTHAPETA ABDUL AJMATH",
+    "school": 8,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 41,
+  "fields": {
+    "full_name": "KULDASHEVA AZIZA XOLJIGITOVNA",
+    "school": 4,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 42,
+  "fields": {
+    "full_name": "LI XINGCAN",
+    "school": 5,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 43,
+  "fields": {
+    "full_name": "MAXMUDOV UMEDULLO AKMALIDDIN O‘G‘LI",
+    "school": 10,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 44,
+  "fields": {
+    "full_name": "MUSTANOVA SHAXNOZA RUSTAMOVNA",
+    "school": 10,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 45,
+  "fields": {
+    "full_name": "MUXIDDINOVA MAVZUNA SIROJIDDIN QIZI",
+    "school": 10,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 46,
+  "fields": {
+    "full_name": "NATARAJAN ARUL KUMAR",
+    "school": 8,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 47,
+  "fields": {
+    "full_name": "NAZAROV PULAT DJURAMURADOVICH",
+    "school": 10,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 48,
+  "fields": {
+    "full_name": "PAK KSENIYA YEVGENEVNA",
+    "school": 5,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 49,
+  "fields": {
+    "full_name": "RABANI SYED TANZEEL",
+    "school": 8,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 50,
+  "fields": {
+    "full_name": "RATHER BILAL AHMAD",
+    "school": 4,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 51,
+  "fields": {
+    "full_name": "ROMA FRANCISCO",
+    "school": 9,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 52,
+  "fields": {
+    "full_name": "RUSTAMOVA ZUXRO TURAYEVNA",
+    "school": 10,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 53,
+  "fields": {
+    "full_name": "SADIYEVA NASIBA OLIMDJANOVNA",
+    "school": 10,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 54,
+  "fields": {
+    "full_name": "SAMUKOV TULKUN IRGASHEVICH",
+    "school": 4,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 55,
+  "fields": {
+    "full_name": "SARVAROVA ALBINA ILGIZOVNA",
+    "school": 9,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 56,
+  "fields": {
+    "full_name": "SCHNEIDER ARTHUR YERNST",
+    "school": 10,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 57,
+  "fields": {
+    "full_name": "SETH VIDRIO",
+    "school": 8,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 58,
+  "fields": {
+    "full_name": "SOKOLOV MIKHAIL",
+    "school": 9,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 59,
+  "fields": {
+    "full_name": "SOUNDARARAJAN RAJASOUNDARAN",
+    "school": 8,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 60,
+  "fields": {
+    "full_name": "TAN ZABDIYEL NALDOZA",
+    "school": 8,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 61,
+  "fields": {
+    "full_name": "SUYUNOV ALISHER",
+    "school": 9,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 62,
+  "fields": {
+    "full_name": "VERNON JILL ANN",
+    "school": 10,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 63,
+  "fields": {
+    "full_name": "VERNON RANDY",
+    "school": 10,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 64,
+  "fields": {
+    "full_name": "XAKIMOV ABDULLO ABDUXALILOVICH",
+    "school": 12,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 65,
+  "fields": {
+    "full_name": "XU ZHANG",
+    "school": 5,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 66,
+  "fields": {
+    "full_name": "YAHIA MEZIANE",
+    "school": 4,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 67,
+  "fields": {
+    "full_name": "YALG‘ASHEV OLIMJON RASHIDOVICH",
+    "school": 8,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 68,
+  "fields": {
+    "full_name": "YUN GAEUN",
+    "school": 6,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.professor",
+  "pk": 69,
+  "fields": {
+    "full_name": "ZHANG SU HANG",
+    "school": 5,
+    "email": ""
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 7,
+  "fields": {
+    "group": 16,
+    "professor": 6
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 8,
+  "fields": {
+    "group": 19,
+    "professor": 6
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 9,
+  "fields": {
+    "group": 22,
+    "professor": 6
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 10,
+  "fields": {
+    "group": 7,
+    "professor": 6
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 11,
+  "fields": {
+    "group": 31,
+    "professor": 6
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 12,
+  "fields": {
+    "group": 33,
+    "professor": 7
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 13,
+  "fields": {
+    "group": 17,
+    "professor": 7
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 14,
+  "fields": {
+    "group": 18,
+    "professor": 7
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 15,
+  "fields": {
+    "group": 14,
+    "professor": 7
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 16,
+  "fields": {
+    "group": 15,
+    "professor": 7
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 17,
+  "fields": {
+    "group": 9,
+    "professor": 9
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 18,
+  "fields": {
+    "group": 28,
+    "professor": 9
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 19,
+  "fields": {
+    "group": 30,
+    "professor": 9
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 20,
+  "fields": {
+    "group": 29,
+    "professor": 10
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 21,
+  "fields": {
+    "group": 23,
+    "professor": 10
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 22,
+  "fields": {
+    "group": 5,
+    "professor": 11
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 23,
+  "fields": {
+    "group": 6,
+    "professor": 11
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 24,
+  "fields": {
+    "group": 8,
+    "professor": 11
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 25,
+  "fields": {
+    "group": 24,
+    "professor": 11
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 26,
+  "fields": {
+    "group": 25,
+    "professor": 11
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 27,
+  "fields": {
+    "group": 22,
+    "professor": 12
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 28,
+  "fields": {
+    "group": 5,
+    "professor": 13
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 29,
+  "fields": {
+    "group": 6,
+    "professor": 13
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 30,
+  "fields": {
+    "group": 8,
+    "professor": 13
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 31,
+  "fields": {
+    "group": 24,
+    "professor": 13
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 32,
+  "fields": {
+    "group": 25,
+    "professor": 13
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 33,
+  "fields": {
+    "group": 16,
+    "professor": 14
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 34,
+  "fields": {
+    "group": 33,
+    "professor": 14
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 35,
+  "fields": {
+    "group": 19,
+    "professor": 14
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 36,
+  "fields": {
+    "group": 15,
+    "professor": 14
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 37,
+  "fields": {
+    "group": 28,
+    "professor": 15
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 38,
+  "fields": {
+    "group": 30,
+    "professor": 15
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 39,
+  "fields": {
+    "group": 16,
+    "professor": 16
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 40,
+  "fields": {
+    "group": 19,
+    "professor": 16
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 41,
+  "fields": {
+    "group": 22,
+    "professor": 16
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 42,
+  "fields": {
+    "group": 7,
+    "professor": 16
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 43,
+  "fields": {
+    "group": 31,
+    "professor": 16
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 44,
+  "fields": {
+    "group": 24,
+    "professor": 17
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 45,
+  "fields": {
+    "group": 25,
+    "professor": 17
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 46,
+  "fields": {
+    "group": 6,
+    "professor": 17
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 47,
+  "fields": {
+    "group": 7,
+    "professor": 17
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 48,
+  "fields": {
+    "group": 22,
+    "professor": 19
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 49,
+  "fields": {
+    "group": 22,
+    "professor": 20
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 50,
+  "fields": {
+    "group": 8,
+    "professor": 21
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 51,
+  "fields": {
+    "group": 24,
+    "professor": 21
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 52,
+  "fields": {
+    "group": 6,
+    "professor": 21
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 53,
+  "fields": {
+    "group": 20,
+    "professor": 23
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 54,
+  "fields": {
+    "group": 21,
+    "professor": 23
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 55,
+  "fields": {
+    "group": 29,
+    "professor": 24
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 56,
+  "fields": {
+    "group": 31,
+    "professor": 24
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 57,
+  "fields": {
+    "group": 16,
+    "professor": 25
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 58,
+  "fields": {
+    "group": 19,
+    "professor": 25
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 59,
+  "fields": {
+    "group": 4,
+    "professor": 25
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 60,
+  "fields": {
+    "group": 21,
+    "professor": 25
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 61,
+  "fields": {
+    "group": 22,
+    "professor": 25
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 62,
+  "fields": {
+    "group": 12,
+    "professor": 25
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 63,
+  "fields": {
+    "group": 31,
+    "professor": 25
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 64,
+  "fields": {
+    "group": 11,
+    "professor": 26
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 65,
+  "fields": {
+    "group": 4,
+    "professor": 26
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 66,
+  "fields": {
+    "group": 33,
+    "professor": 27
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 67,
+  "fields": {
+    "group": 27,
+    "professor": 27
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 68,
+  "fields": {
+    "group": 30,
+    "professor": 27
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 69,
+  "fields": {
+    "group": 33,
+    "professor": 28
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 70,
+  "fields": {
+    "group": 20,
+    "professor": 28
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 71,
+  "fields": {
+    "group": 21,
+    "professor": 28
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 72,
+  "fields": {
+    "group": 31,
+    "professor": 28
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 73,
+  "fields": {
+    "group": 22,
+    "professor": 29
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 74,
+  "fields": {
+    "group": 22,
+    "professor": 31
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 75,
+  "fields": {
+    "group": 7,
+    "professor": 31
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 76,
+  "fields": {
+    "group": 16,
+    "professor": 32
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 77,
+  "fields": {
+    "group": 33,
+    "professor": 32
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 78,
+  "fields": {
+    "group": 18,
+    "professor": 32
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 79,
+  "fields": {
+    "group": 19,
+    "professor": 32
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 80,
+  "fields": {
+    "group": 15,
+    "professor": 32
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 81,
+  "fields": {
+    "group": 16,
+    "professor": 33
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 82,
+  "fields": {
+    "group": 14,
+    "professor": 33
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 83,
+  "fields": {
+    "group": 15,
+    "professor": 33
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 84,
+  "fields": {
+    "group": 16,
+    "professor": 34
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 85,
+  "fields": {
+    "group": 17,
+    "professor": 34
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 86,
+  "fields": {
+    "group": 19,
+    "professor": 34
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 87,
+  "fields": {
+    "group": 14,
+    "professor": 34
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 88,
+  "fields": {
+    "group": 17,
+    "professor": 35
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 89,
+  "fields": {
+    "group": 18,
+    "professor": 35
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 90,
+  "fields": {
+    "group": 19,
+    "professor": 35
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 91,
+  "fields": {
+    "group": 17,
+    "professor": 36
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 92,
+  "fields": {
+    "group": 18,
+    "professor": 36
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 93,
+  "fields": {
+    "group": 19,
+    "professor": 36
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 94,
+  "fields": {
+    "group": 16,
+    "professor": 37
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 95,
+  "fields": {
+    "group": 33,
+    "professor": 37
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 96,
+  "fields": {
+    "group": 17,
+    "professor": 37
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 97,
+  "fields": {
+    "group": 18,
+    "professor": 37
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 98,
+  "fields": {
+    "group": 19,
+    "professor": 37
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 99,
+  "fields": {
+    "group": 14,
+    "professor": 37
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 100,
+  "fields": {
+    "group": 15,
+    "professor": 37
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 101,
+  "fields": {
+    "group": 32,
+    "professor": 38
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 102,
+  "fields": {
+    "group": 33,
+    "professor": 38
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 103,
+  "fields": {
+    "group": 12,
+    "professor": 39
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 104,
+  "fields": {
+    "group": 4,
+    "professor": 39
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 105,
+  "fields": {
+    "group": 21,
+    "professor": 39
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 106,
+  "fields": {
+    "group": 16,
+    "professor": 40
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 107,
+  "fields": {
+    "group": 11,
+    "professor": 40
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 108,
+  "fields": {
+    "group": 4,
+    "professor": 40
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 109,
+  "fields": {
+    "group": 27,
+    "professor": 41
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 110,
+  "fields": {
+    "group": 20,
+    "professor": 42
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 111,
+  "fields": {
+    "group": 21,
+    "professor": 42
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 112,
+  "fields": {
+    "group": 16,
+    "professor": 43
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 113,
+  "fields": {
+    "group": 19,
+    "professor": 43
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 114,
+  "fields": {
+    "group": 22,
+    "professor": 43
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 115,
+  "fields": {
+    "group": 7,
+    "professor": 43
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 116,
+  "fields": {
+    "group": 31,
+    "professor": 43
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 117,
+  "fields": {
+    "group": 22,
+    "professor": 44
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 118,
+  "fields": {
+    "group": 31,
+    "professor": 44
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 119,
+  "fields": {
+    "group": 4,
+    "professor": 45
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 120,
+  "fields": {
+    "group": 7,
+    "professor": 45
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 121,
+  "fields": {
+    "group": 12,
+    "professor": 45
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 122,
+  "fields": {
+    "group": 16,
+    "professor": 45
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 123,
+  "fields": {
+    "group": 19,
+    "professor": 45
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 124,
+  "fields": {
+    "group": 21,
+    "professor": 45
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 125,
+  "fields": {
+    "group": 22,
+    "professor": 45
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 126,
+  "fields": {
+    "group": 31,
+    "professor": 45
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 127,
+  "fields": {
+    "group": 4,
+    "professor": 47
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 128,
+  "fields": {
+    "group": 7,
+    "professor": 47
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 129,
+  "fields": {
+    "group": 12,
+    "professor": 47
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 130,
+  "fields": {
+    "group": 16,
+    "professor": 47
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 131,
+  "fields": {
+    "group": 19,
+    "professor": 47
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 132,
+  "fields": {
+    "group": 21,
+    "professor": 47
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 133,
+  "fields": {
+    "group": 22,
+    "professor": 47
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 134,
+  "fields": {
+    "group": 31,
+    "professor": 47
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 135,
+  "fields": {
+    "group": 20,
+    "professor": 48
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 136,
+  "fields": {
+    "group": 21,
+    "professor": 48
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 137,
+  "fields": {
+    "group": 28,
+    "professor": 50
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 138,
+  "fields": {
+    "group": 30,
+    "professor": 50
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 139,
+  "fields": {
+    "group": 23,
+    "professor": 50
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 140,
+  "fields": {
+    "group": 5,
+    "professor": 51
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 141,
+  "fields": {
+    "group": 6,
+    "professor": 51
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 142,
+  "fields": {
+    "group": 7,
+    "professor": 51
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 143,
+  "fields": {
+    "group": 8,
+    "professor": 51
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 144,
+  "fields": {
+    "group": 25,
+    "professor": 51
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 145,
+  "fields": {
+    "group": 16,
+    "professor": 52
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 146,
+  "fields": {
+    "group": 19,
+    "professor": 52
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 147,
+  "fields": {
+    "group": 7,
+    "professor": 52
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 148,
+  "fields": {
+    "group": 12,
+    "professor": 53
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 149,
+  "fields": {
+    "group": 4,
+    "professor": 53
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 150,
+  "fields": {
+    "group": 21,
+    "professor": 53
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 151,
+  "fields": {
+    "group": 30,
+    "professor": 54
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 152,
+  "fields": {
+    "group": 18,
+    "professor": 55
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 153,
+  "fields": {
+    "group": 29,
+    "professor": 55
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 154,
+  "fields": {
+    "group": 16,
+    "professor": 56
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 155,
+  "fields": {
+    "group": 19,
+    "professor": 56
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 156,
+  "fields": {
+    "group": 4,
+    "professor": 56
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 157,
+  "fields": {
+    "group": 21,
+    "professor": 56
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 158,
+  "fields": {
+    "group": 7,
+    "professor": 56
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 159,
+  "fields": {
+    "group": 12,
+    "professor": 56
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 160,
+  "fields": {
+    "group": 24,
+    "professor": 58
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 161,
+  "fields": {
+    "group": 25,
+    "professor": 61
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 162,
+  "fields": {
+    "group": 7,
+    "professor": 61
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 163,
+  "fields": {
+    "group": 16,
+    "professor": 62
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 164,
+  "fields": {
+    "group": 19,
+    "professor": 62
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 165,
+  "fields": {
+    "group": 22,
+    "professor": 62
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 166,
+  "fields": {
+    "group": 7,
+    "professor": 62
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 167,
+  "fields": {
+    "group": 31,
+    "professor": 62
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 168,
+  "fields": {
+    "group": 16,
+    "professor": 63
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 169,
+  "fields": {
+    "group": 19,
+    "professor": 63
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 170,
+  "fields": {
+    "group": 4,
+    "professor": 63
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 171,
+  "fields": {
+    "group": 21,
+    "professor": 63
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 172,
+  "fields": {
+    "group": 22,
+    "professor": 63
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 173,
+  "fields": {
+    "group": 12,
+    "professor": 63
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 174,
+  "fields": {
+    "group": 16,
+    "professor": 64
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 175,
+  "fields": {
+    "group": 19,
+    "professor": 64
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 176,
+  "fields": {
+    "group": 20,
+    "professor": 65
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 177,
+  "fields": {
+    "group": 21,
+    "professor": 65
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 178,
+  "fields": {
+    "group": 33,
+    "professor": 66
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 179,
+  "fields": {
+    "group": 23,
+    "professor": 66
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 180,
+  "fields": {
+    "group": 9,
+    "professor": 66
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 181,
+  "fields": {
+    "group": 29,
+    "professor": 66
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 182,
+  "fields": {
+    "group": 31,
+    "professor": 66
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 183,
+  "fields": {
+    "group": 22,
+    "professor": 67
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 184,
+  "fields": {
+    "group": 31,
+    "professor": 67
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 185,
+  "fields": {
+    "group": 14,
+    "professor": 68
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 186,
+  "fields": {
+    "group": 15,
+    "professor": 68
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 187,
+  "fields": {
+    "group": 20,
+    "professor": 69
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 188,
+  "fields": {
+    "group": 21,
+    "professor": 69
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 189,
+  "fields": {
+    "group": 29,
+    "professor": 5
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 190,
+  "fields": {
+    "group": 10,
+    "professor": 5
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 191,
+  "fields": {
+    "group": 11,
+    "professor": 5
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 192,
+  "fields": {
+    "group": 21,
+    "professor": 5
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 193,
+  "fields": {
+    "group": 10,
+    "professor": 22
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 194,
+  "fields": {
+    "group": 11,
+    "professor": 22
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 195,
+  "fields": {
+    "group": 13,
+    "professor": 22
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 196,
+  "fields": {
+    "group": 10,
+    "professor": 30
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 197,
+  "fields": {
+    "group": 13,
+    "professor": 30
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 198,
+  "fields": {
+    "group": 10,
+    "professor": 46
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 199,
+  "fields": {
+    "group": 13,
+    "professor": 46
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 200,
+  "fields": {
+    "group": 14,
+    "professor": 46
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 201,
+  "fields": {
+    "group": 10,
+    "professor": 49
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 202,
+  "fields": {
+    "group": 13,
+    "professor": 49
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 203,
+  "fields": {
+    "group": 7,
+    "professor": 49
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 204,
+  "fields": {
+    "group": 11,
+    "professor": 57
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 205,
+  "fields": {
+    "group": 14,
+    "professor": 57
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 206,
+  "fields": {
+    "group": 19,
+    "professor": 59
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 207,
+  "fields": {
+    "group": 11,
+    "professor": 59
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 208,
+  "fields": {
+    "group": 20,
+    "professor": 59
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 209,
+  "fields": {
+    "group": 13,
+    "professor": 59
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 210,
+  "fields": {
+    "group": 11,
+    "professor": 60
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 211,
+  "fields": {
+    "group": 4,
+    "professor": 60
+  }
+},
+{
+  "model": "evaluations.groupprofessor",
+  "pk": 212,
+  "fields": {
+    "group": 12,
+    "professor": 60
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 1,
+  "fields": {
+    "text_en": "The instructor provided a clear syllabus on the first day of class which included a statement of the student learning outcomes for the course.",
+    "text_uz": "Professor darsning birinchi kunida kursning talaba o‘quv natijalari bayonini o‘z ichiga olgan aniq o‘quv dasturini taqdim etdi.",
+    "text_ru": "Профессор в первый день занятий предоставил чёткий учебный план, который включал формулировку ожидаемых результатов обучения студентов по курсу.",
+    "question_type": "rating",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2025-11-22T13:42:44.869Z",
+    "updated_at": "2025-11-22T13:42:44.869Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 2,
+  "fields": {
+    "text_en": "The instructor taught to the student learning outcomes as stated in the syllabus.",
+    "text_uz": "O‘qituvchi o‘quv dasturida ko‘rsatilgan talaba o‘quv natijalariga muvofiq dars o‘tdi.",
+    "text_ru": "Преподаватель вёл занятия в соответствии с ожидаемыми результатами обучения студентов, указанными в учебном плане.",
+    "question_type": "rating",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2025-11-22T13:44:14.105Z",
+    "updated_at": "2025-11-22T13:44:14.105Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 3,
+  "fields": {
+    "text_en": "The instructor consistently arrived on time to class.",
+    "text_uz": "O‘qituvchi doimiy ravishda darsga o‘z vaqtida keldi.",
+    "text_ru": "Преподаватель постоянно приходил на занятия вовремя.",
+    "question_type": "rating",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2025-11-22T13:45:02.339Z",
+    "updated_at": "2025-11-22T13:45:02.339Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 4,
+  "fields": {
+    "text_en": "The instructor consistently dismissed class at the scheduled time.",
+    "text_uz": "O‘qituvchi doimiy ravishda darsni belgilangan vaqtda tugatdi.",
+    "text_ru": "Преподаватель постоянно заканчивал занятия в установленное расписанием время.",
+    "question_type": "rating",
+    "order": 4,
+    "is_active": true,
+    "created_at": "2025-11-22T13:45:44.964Z",
+    "updated_at": "2025-11-22T13:45:44.964Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 5,
+  "fields": {
+    "text_en": "The instructor was enthusiastic about the course content.",
+    "text_uz": "O‘qituvchi kurs mazmuniga nisbatan katta ishtiyoq ko‘rsatdi.",
+    "text_ru": "Преподаватель проявлял энтузиазм по отношению к содержанию курса.",
+    "question_type": "rating",
+    "order": 5,
+    "is_active": true,
+    "created_at": "2025-11-22T13:46:46.245Z",
+    "updated_at": "2025-11-22T13:46:46.246Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 6,
+  "fields": {
+    "text_en": "The instructor presented the material in an organized manner.",
+    "text_uz": "O‘qituvchi materialni tartibli va tizimli tarzda taqdim etdi.",
+    "text_ru": "Преподаватель излагал материал организованно и систематично.",
+    "question_type": "rating",
+    "order": 6,
+    "is_active": true,
+    "created_at": "2025-11-22T13:47:32.398Z",
+    "updated_at": "2025-11-22T13:47:32.398Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 7,
+  "fields": {
+    "text_en": "The instructor's method of delivery (lecture, discussion, group activities, email, etc.) was helpful in my learning the material.",
+    "text_uz": "O‘qituvchining taqdim etish usuli (ma’ruza, muhokama, guruh mashg‘ulotlari, elektron pochta va h.k.) materialni o‘zlashtirishimda foydali bo‘ldi.",
+    "text_ru": "Метод преподавания преподавателя (лекции, обсуждения, групповые занятия, электронная почта и т.д.) помогал мне в усвоении материала.",
+    "question_type": "rating",
+    "order": 7,
+    "is_active": true,
+    "created_at": "2025-11-22T13:48:30.216Z",
+    "updated_at": "2025-11-22T13:48:30.216Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 8,
+  "fields": {
+    "text_en": "The instructor used appropriate technology.",
+    "text_uz": "O‘qituvchi mos va tegishli texnologiyalardan foydalandi.",
+    "text_ru": "Преподаватель использовал подходящие технологии.",
+    "question_type": "rating",
+    "order": 0,
+    "is_active": true,
+    "created_at": "2025-11-22T13:48:59.907Z",
+    "updated_at": "2025-11-22T13:48:59.907Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 9,
+  "fields": {
+    "text_en": "The instructor used appropriate technology.",
+    "text_uz": "O‘qituvchi mos va tegishli texnologiyalardan foydalandi.",
+    "text_ru": "Преподаватель использовал подходящие технологии.",
+    "question_type": "rating",
+    "order": 8,
+    "is_active": true,
+    "created_at": "2025-11-22T13:49:56.178Z",
+    "updated_at": "2025-11-22T13:49:56.178Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 10,
+  "fields": {
+    "text_en": "The instructor seemed to be highly knowledgeable about course content.",
+    "text_uz": "O‘qituvchi kurs mazmunini juda yaxshi biladiganga o‘xshardi.",
+    "text_ru": "Преподаватель производил впечатление человека, очень хорошо знающего содержание курса.",
+    "question_type": "rating",
+    "order": 9,
+    "is_active": true,
+    "created_at": "2025-11-22T13:50:51.607Z",
+    "updated_at": "2025-11-22T13:50:51.607Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 11,
+  "fields": {
+    "text_en": "The instructor was accessible to students.",
+    "text_uz": "O‘qituvchi talabalar uchun doim ochiq va yaqin edi.",
+    "text_ru": "Преподаватель был доступен для студентов.",
+    "question_type": "rating",
+    "order": 10,
+    "is_active": true,
+    "created_at": "2025-11-22T13:51:30.035Z",
+    "updated_at": "2025-11-22T13:51:30.035Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 12,
+  "fields": {
+    "text_en": "The instructor promoted student critical thinking.",
+    "text_uz": "O‘qituvchi talabalarda tanqidiy fikrlashni rivojlantirishga yordam berdi.",
+    "text_ru": "Преподаватель способствовал развитию критического мышления у студентов.",
+    "question_type": "rating",
+    "order": 11,
+    "is_active": true,
+    "created_at": "2025-11-22T13:52:11.194Z",
+    "updated_at": "2025-11-22T13:52:11.194Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 13,
+  "fields": {
+    "text_en": "The instructor encouraged students to explore opposing viewpoints.",
+    "text_uz": "O‘qituvchi talabalarni qarama-qarshi fikr va nuqtai nazarlarni o‘rganishga undadi.",
+    "text_ru": "Преподаватель побуждал студентов изучать противоположные точки зрения.",
+    "question_type": "rating",
+    "order": 12,
+    "is_active": true,
+    "created_at": "2025-11-22T13:52:56.880Z",
+    "updated_at": "2025-11-22T13:52:56.880Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 14,
+  "fields": {
+    "text_en": "The instructor exemplified SIUT’s values of Honor, Freethinking, and Humanism.",
+    "text_uz": "O‘qituvchi SIUTning “Or-nomus”, “Hurfikrlilik” va “Insonparvarlik” qadriyatlarini o‘zida namuna qilib ko‘rsatdi.",
+    "text_ru": "Преподаватель являл собой пример воплощения ценностей SIUT — Честь, Свободомыслие и Гуманизм.",
+    "question_type": "rating",
+    "order": 13,
+    "is_active": true,
+    "created_at": "2025-11-22T13:54:14.904Z",
+    "updated_at": "2025-11-22T13:54:14.904Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 15,
+  "fields": {
+    "text_en": "The instructor exhibited a caring attitude toward students.",
+    "text_uz": "O‘qituvchi talabalarga nisbatan g‘amxo‘r va e’tiborli munosabat ko‘rsatdi.",
+    "text_ru": "Преподаватель проявлял заботливое отношение к студентам.",
+    "question_type": "rating",
+    "order": 14,
+    "is_active": true,
+    "created_at": "2025-11-22T13:54:50.532Z",
+    "updated_at": "2025-11-22T13:54:50.532Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 16,
+  "fields": {
+    "text_en": "The tests were related to the student learning outcomes as stated in the syllabus.",
+    "text_uz": "Testlar o‘quv dasturida ko‘rsatilgan talaba o‘quv natijalariga mos edi.",
+    "text_ru": "Тесты соответствовали ожидаемым результатам обучения студентов, указанным в учебном плане.",
+    "question_type": "rating",
+    "order": 15,
+    "is_active": true,
+    "created_at": "2025-11-22T13:55:31.651Z",
+    "updated_at": "2025-11-22T13:55:31.651Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 17,
+  "fields": {
+    "text_en": "Course assignments were useful to my learning experience.",
+    "text_uz": "Kurs topshiriqlari mening o‘quv jarayonim uchun foydali bo‘ldi.",
+    "text_ru": "Задания курса были полезны для моего процесса обучения.",
+    "question_type": "rating",
+    "order": 16,
+    "is_active": true,
+    "created_at": "2025-11-22T13:56:09.287Z",
+    "updated_at": "2025-11-22T13:56:09.287Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 18,
+  "fields": {
+    "text_en": "The textbook (if applicable) was a useful tool in meeting the course outcome competencies.",
+    "text_uz": "Darslik (agar mavjud bo‘lsa) kurs natijalari kompetensiyalariga erishishda foydali vosita bo‘ldi.",
+    "text_ru": "Учебник (при его наличии) был полезным инструментом для достижения компетенций, предусмотренных результатами курса.",
+    "question_type": "rating",
+    "order": 17,
+    "is_active": true,
+    "created_at": "2025-11-22T13:56:54.146Z",
+    "updated_at": "2025-11-22T13:56:54.146Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 19,
+  "fields": {
+    "text_en": "The course required me to use learning resources (Library, tutor, other outside resources).",
+    "text_uz": "Kurs meni o‘quv resurslaridan (kutubxona, repetitor, boshqa tashqi manbalar) foydalanishga majbur qildi.",
+    "text_ru": "Курс требовал от меня использования учебных ресурсов (библиотека, репетитор, другие внешние источники).",
+    "question_type": "rating",
+    "order": 18,
+    "is_active": true,
+    "created_at": "2025-11-22T13:57:52.972Z",
+    "updated_at": "2025-11-22T13:57:52.972Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 20,
+  "fields": {
+    "text_en": "I had access to sufficient learning resources to meet the requirements of this course.",
+    "text_uz": "Ushbu kurs talablarini bajarish uchun menda yetarli o‘quv resurslari mavjud edi.",
+    "text_ru": "У меня был доступ к достаточным учебным ресурсам для выполнения требований этого курса.",
+    "question_type": "rating",
+    "order": 19,
+    "is_active": true,
+    "created_at": "2025-11-22T13:58:36.280Z",
+    "updated_at": "2025-11-22T13:58:36.280Z"
+  }
+},
+{
+  "model": "evaluations.question",
+  "pk": 21,
+  "fields": {
+    "text_en": "Please write any comments below on what was helpful to your learning experience or what was not:",
+    "text_uz": "Iltimos, o‘quv jarayoningizda nima foydali bo‘lganini yoki nima foydali bo‘lmaganini yozing:",
+    "text_ru": "Пожалуйста, напишите любые комментарии о том, что было полезно для вашего обучения, а что - нет:",
+    "question_type": "text",
+    "order": 20,
+    "is_active": true,
+    "created_at": "2025-11-22T13:59:26.210Z",
+    "updated_at": "2025-11-22T13:59:26.210Z"
+  }
+},
+{
+  "model": "evaluations.internshipquestion",
+  "pk": 1,
+  "fields": {
+    "text_en": "The internal internship tasks were clearly explained.",
+    "text_uz": "Ichki Ichki vazifalari aniq tushuntirildi.",
+    "text_ru": "Задачи внутренней стажировки были четко объяснены.",
+    "question_type": "rating",
+    "order": 1,
+    "is_active": true,
+    "created_at": "2025-11-27T14:48:19.481Z",
+    "updated_at": "2025-11-27T14:48:19.481Z"
+  }
+},
+{
+  "model": "evaluations.internshipquestion",
+  "pk": 2,
+  "fields": {
+    "text_en": "The internship activities were relevant to the course outcomes.",
+    "text_uz": "Stajirovka mashg'ulotlari kurs natijalariga mos edi.",
+    "text_ru": "Деятельность стажировки были релевантны результатам курса.",
+    "question_type": "rating",
+    "order": 2,
+    "is_active": true,
+    "created_at": "2025-11-27T14:52:05.312Z",
+    "updated_at": "2025-11-27T14:52:05.312Z"
+  }
+},
+{
+  "model": "evaluations.internshipquestion",
+  "pk": 3,
+  "fields": {
+    "text_en": "Supervisors provided guidance and feedback",
+    "text_uz": "Stajirovka olib boruvchilar yo‘l-yo‘riq va fikr-mulohaza berdi",
+    "text_ru": "Руководители предоставляли наставления и обратную связь",
+    "question_type": "rating",
+    "order": 3,
+    "is_active": true,
+    "created_at": "2025-11-27T14:53:01.431Z",
+    "updated_at": "2025-11-27T14:54:08.636Z"
+  }
+},
+{
+  "model": "evaluations.internshipquestion",
+  "pk": 4,
+  "fields": {
+    "text_en": "The internship improved my practical skills",
+    "text_uz": "Stajirovka mening amaliy ko‘nikmalarimni yaxshiladi",
+    "text_ru": "Стажировка улучшила мои практические навыки",
+    "question_type": "rating",
+    "order": 4,
+    "is_active": true,
+    "created_at": "2025-11-27T14:53:50.520Z",
+    "updated_at": "2025-11-27T14:53:50.520Z"
+  }
+},
+{
+  "model": "evaluations.internshipquestion",
+  "pk": 5,
+  "fields": {
+    "text_en": "Overall, the internship contributed positively to my experience",
+    "text_uz": "Umuman olganda, stajirovka mening tajribamga ijobiy hissa qo‘shdi",
+    "text_ru": "В целом стажировка положительно повлияла на мой опыт",
+    "question_type": "rating",
+    "order": 5,
+    "is_active": true,
+    "created_at": "2025-11-27T14:54:56.336Z",
+    "updated_at": "2025-11-27T14:54:56.336Z"
+  }
+},
+{
+  "model": "evaluations.internshipquestion",
+  "pk": 6,
+  "fields": {
+    "text_en": "Please write any comments on what was helpful or what could be improved",
+    "text_uz": "Iltimos, nima foydali bo‘lganini yoki nima yaxshilanishi mumkinligini yozing",
+    "text_ru": "Пожалуйста, напишите любые комментарии о том, что было полезно или что можно улучшить",
+    "question_type": "text",
+    "order": 6,
+    "is_active": true,
+    "created_at": "2025-11-27T14:55:35.632Z",
+    "updated_at": "2025-11-27T14:55:35.632Z"
+  }
+}
+]

@@ -65,17 +65,35 @@ CREATE DATABASE survey_db;
 ### 5. Run Migrations
 
 ```powershell
-python manage.py makemigrations
 python manage.py migrate
 ```
 
-### 6. Create Superuser
+### 6. Load Initial Data (Optional but Recommended)
+
+Load pre-configured schools, departments, groups, professors, and questions:
+
+```powershell
+python manage.py loaddata fixtures/initial_data.json
+```
+
+This will populate:
+- 10 Schools
+- 17 Departments  
+- 30 Academic Groups
+- 65 Professors
+- 206 Group-Professor Assignments
+- Survey Questions (in English, Uzbek, Russian)
+- Internship Questions
+
+**Note:** If you load fixtures, a default admin user may already exist. Otherwise, create one:
+
+### 7. Create Superuser
 
 ```powershell
 python manage.py createsuperuser
 ```
 
-### 7. Compile Translation Messages
+### 8. Compile Translation Messages
 
 ```powershell
 python manage.py compilemessages
@@ -83,7 +101,7 @@ python manage.py compilemessages
 
 If this fails, you can skip it for now (translations will use English defaults).
 
-### 8. Run Development Server
+### 9. Run Development Server
 
 ```powershell
 python manage.py runserver
