@@ -87,7 +87,7 @@ class Group(models.Model):
         ordering = ['group_name']
 
     def __str__(self):
-        return f"{self.group_name} - {self.department.name} (Semester {self.semester})"
+        return f"{self.group_name} - {self.department.name}"
 
 
 class Professor(models.Model):
