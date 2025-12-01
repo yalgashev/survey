@@ -11,7 +11,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5436:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -29,7 +29,7 @@ services:
     environment:
       - DEBUG=True
       - DB_HOST=db
-      - DB_PORT=5432
+      - DB_PORT=5436
       - DB_NAME=survey_db
       - DB_USER=postgres
       - DB_PASSWORD=123456789
