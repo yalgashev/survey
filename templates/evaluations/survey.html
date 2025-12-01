@@ -124,6 +124,18 @@
         if (errorElement) {
             errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
+        
+        // Handle skip button - remove required validation
+        const skipButton = document.querySelector('button[name="skip_professor"]');
+        if (skipButton) {
+            skipButton.addEventListener('click', function(e) {
+                // Remove required attribute from all inputs before submitting
+                const requiredInputs = document.querySelectorAll('input[required], textarea[required]');
+                requiredInputs.forEach(function(input) {
+                    input.removeAttribute('required');
+                });
+            });
+        }
     });
 </script>
 {% endblock %}
