@@ -27,7 +27,7 @@
             </ul>
         </div>
         
-        <form method="post" class="mt-4">
+        <form method="post" class="mt-4" autocomplete="off">
             {% csrf_token %}
             
             <div class="mb-4">
@@ -62,4 +62,38 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Fix for iOS Safari autofill/autocomplete issues
+    document.addEventListener('DOMContentLoaded', function() {
+        const groupSelect = document.getElementById('{{ form.group.id_for_label }}');
+        
+        if (groupSelect) {
+            // Force reset to default on page load
+            groupSelect.selectedIndex = 0;
+            
+            // Prevent iOS from auto-selecting based on previous values
+            groupSelect.addEventListener('focus', function() {
+                // Clear any pre-selected value on focus
+                if (this.value === '') {
+                    this.selectedIndex = 0;
+                }
+            });
+            
+            // Additional iOS-specific fix: prevent autofill after small delay
+            setTimeout(function() {
+                if (groupSelect.selectedIndex > 0 && !groupSelect.hasAttribute('data-user-selected')) {
+                    groupSelect.selectedIndex = 0;
+                }
+            }, 100);
+            
+            // Mark when user actually makes a selection
+            groupSelect.addEventListener('change', function() {
+                this.setAttribute('data-user-selected', 'true');
+            });
+        }
+    });
+</script>
 {% endblock %}

@@ -10,7 +10,13 @@ class GroupSelectionForm(forms.Form):
         empty_label=_('Select your group'),
         widget=forms.Select(attrs={
             'class': 'form-select form-select-lg',
-            'required': True
+            'required': True,
+            'autocomplete': 'off',
+            'autocorrect': 'off',
+            'autocapitalize': 'off',
+            'spellcheck': 'false',
+            'data-form-type': 'other',  # Prevent iOS password/credit card autofill
+            'data-lpignore': 'true',  # Ignore LastPass
         }),
         label=_('Academic Group')
     )
