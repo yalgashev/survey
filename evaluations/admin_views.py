@@ -855,3 +855,77 @@ def internship_survey_delete(request, pk):
         return redirect('admin_internship_surveys_list')
     
     return render(request, 'admin_custom/internship_survey_confirm_delete.html', {'survey': survey})
+
+
+@login_required
+@user_passes_test(is_admin)
+def admin_professors_rating(request):
+    """Professors rating report with detailed question averages"""
+    from django.db.models import Avg, Count
+    
+    # Get all questions ordered by their order field
+    questions = Question.objects.filter(is_active=True, question_type='rating').order_by('order')
+    text_question = Question.objects.filter(is_active=True, question_type='text').first()
+    
+    # Get all professors
+    professors = Professor.objects.all()
+    
+    professors_data = []
+    
+    for professor in professors:
+        # Get all surveys for this professor
+        surveys = Survey.objects.filter(professor=professor)
+        
+        if not surveys.exists():
+            continue
+        
+        professor_row = {
+            'professor': professor,
+            'question_averages': [],
+            'comments': []
+        }
+        
+        # Calculate average for each rating question
+        total_sum = 0
+        valid_question_count = 0
+        
+        for question in questions:
+            # Get all answers for this question and professor (excluding N/A)
+            answers = Answer.objects.filter(
+                survey__professor=professor,
+                question=question,
+                rating_value__isnull=False
+            ).exclude(rating_value=6)  # Exclude N/A
+            
+            if answers.exists():
+                avg = answers.aggregate(Avg('rating_value'))['rating_value__avg']
+                professor_row['question_averages'].append(round(avg, 2) if avg else 0)
+                total_sum += avg if avg else 0
+                valid_question_count += 1
+            else:
+                professor_row['question_averages'].append(0)
+        
+        # Calculate overall average
+        professor_row['overall_average'] = round(total_sum / valid_question_count, 2) if valid_question_count > 0 else 0
+        
+        # Get text comments (Q20)
+        if text_question:
+            comments = Answer.objects.filter(
+                survey__professor=professor,
+                question=text_question,
+                text_value__isnull=False
+            ).exclude(text_value='').values_list('text_value', flat=True)
+            professor_row['comments'] = list(comments)
+        
+        professors_data.append(professor_row)
+    
+    # Sort by overall average (ascending - lower is better since 1 is best)
+    professors_data.sort(key=lambda x: x['overall_average'])
+    
+    context = {
+        'professors_data': professors_data,
+        'questions': questions,
+        'text_question': text_question,
+    }
+    
+    return render(request, 'admin_custom/professors_rating.html', context)

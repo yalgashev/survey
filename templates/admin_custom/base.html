@@ -224,11 +224,16 @@
             <li><a href="{% url 'admin_groups_list' %}" class="{% if 'groups' in request.path and 'participation' not in request.path %}active{% endif %}">
                 <i class="fas fa-users"></i> Groups
             </a></li>
+            {% comment %}
             <li><a href="{% url 'admin_group_participation' %}" class="{% if 'group-participation' in request.path %}active{% endif %}">
                 <i class="fas fa-chart-bar"></i> Group Participation
             </a></li>
-            <li><a href="{% url 'admin_professors_list' %}" class="{% if 'professors' in request.path %}active{% endif %}">
+            {% endcomment %}
+            <li><a href="{% url 'admin_professors_list' %}" class="{% if 'professors' in request.path and 'rating' not in request.path %}active{% endif %}">
                 <i class="fas fa-chalkboard-teacher"></i> Professors
+            </a></li>
+            <li><a href="{% url 'admin_professors_rating' %}" class="{% if 'professors-rating' in request.path %}active{% endif %}">
+                <i class="fas fa-star"></i> Professors Rating
             </a></li>
             <li><a href="{% url 'admin_assignments_list' %}" class="{% if 'assignments' in request.path %}active{% endif %}">
                 <i class="fas fa-link"></i> Assignments

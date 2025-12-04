@@ -70,6 +70,9 @@ DATABASES = {
         'PASSWORD': os.environ.get('DB_PASSWORD', '123456789'),
         'HOST': os.environ.get('DB_HOST', 'localhost'),
         'PORT': os.environ.get('DB_PORT', '5432'),
+        'OPTIONS': {
+            'client_encoding': 'UTF8',
+        },
     }
 }
 
@@ -118,3 +121,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Ensure UTF-8 encoding for all content
+DEFAULT_CHARSET = 'utf-8'
+FILE_CHARSET = 'utf-8'
