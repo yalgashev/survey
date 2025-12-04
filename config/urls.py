@@ -38,6 +38,7 @@ admin_patterns = [
     path('professors/<int:pk>/delete/', admin_views.professor_delete, name='admin_professor_delete'),
     path('professors/<int:pk>/analytics/', admin_views.professor_analytics, name='admin_professor_analytics'),
     path('professors-rating/', admin_views.admin_professors_rating, name='admin_professors_rating'),
+    path('professors-rating/export/', admin_views.admin_professors_rating_export, name='admin_professors_rating_export'),
     
     # Surveys
     path('surveys/', admin_views.surveys_list, name='admin_surveys_list'),

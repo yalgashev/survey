@@ -929,3 +929,140 @@ def admin_professors_rating(request):
     }
     
     return render(request, 'admin_custom/professors_rating.html', context)
+
+
+@login_required
+@user_passes_test(is_admin)
+def admin_professors_rating_export(request):
+    """Export professors rating to Excel"""
+    from django.db.models import Avg
+    from django.http import HttpResponse
+    from openpyxl import Workbook
+    from openpyxl.utils import get_column_letter
+    
+    # Get all questions ordered by their order field
+    questions = Question.objects.filter(is_active=True, question_type='rating').order_by('order')
+    text_question = Question.objects.filter(is_active=True, question_type='text').first()
+    
+    # Get all professors
+    professors = Professor.objects.all()
+    
+    professors_data = []
+    
+    for professor in professors:
+        # Get all surveys for this professor
+        surveys = Survey.objects.filter(professor=professor)
+        
+        if not surveys.exists():
+            continue
+        
+        professor_row = {
+            'professor': professor,
+            'question_averages': [],
+            'comments': []
+        }
+        
+        # Calculate average for each rating question
+        total_sum = 0
+        valid_question_count = 0
+        
+        for question in questions:
+            # Get all answers for this question and professor (excluding N/A)
+            answers = Answer.objects.filter(
+                survey__professor=professor,
+                question=question,
+                rating_value__isnull=False
+            ).exclude(rating_value=6)  # Exclude N/A
+            
+            if answers.exists():
+                avg = answers.aggregate(Avg('rating_value'))['rating_value__avg']
+                professor_row['question_averages'].append(round(avg, 2) if avg else 0)
+                total_sum += avg if avg else 0
+                valid_question_count += 1
+            else:
+                professor_row['question_averages'].append(0)
+        
+        # Calculate overall average
+        professor_row['overall_average'] = round(total_sum / valid_question_count, 2) if valid_question_count > 0 else 0
+        
+        # Get text comments
+        if text_question:
+            comments = Answer.objects.filter(
+                survey__professor=professor,
+                question=text_question,
+                text_value__isnull=False
+            ).exclude(text_value='').values_list('text_value', flat=True)
+            professor_row['comments'] = list(comments)
+        
+        professors_data.append(professor_row)
+    
+    # Sort by overall average (ascending - lower is better since 1 is best)
+    professors_data.sort(key=lambda x: x['overall_average'])
+    
+    # Create Excel workbook
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Professors Rating"
+    
+    # Create header row
+    headers = ['#', 'Professor Name', 'School']
+    for q in questions:
+        headers.append(f'Q{q.order}')
+    headers.append('Average Score')
+    if text_question:
+        headers.append(f'Comments (Q{text_question.order})')
+    
+    ws.append(headers)
+    
+    # Add data rows with explicit UTF-8 handling
+    for idx, prof_data in enumerate(professors_data, start=1):
+        # Ensure all text is properly encoded as UTF-8 strings
+        row = [
+            idx,
+            str(prof_data['professor'].full_name),  # Explicit string conversion
+            str(prof_data['professor'].school.name) if prof_data['professor'].school else ''
+        ]
+        
+        # Add question averages
+        for avg in prof_data['question_averages']:
+            row.append(avg if avg > 0 else '')
+        
+        # Add overall average
+        row.append(prof_data['overall_average'])
+        
+        # Add comments (joined with newlines) - explicit UTF-8 handling
+        if text_question:
+            if prof_data['comments']:
+                # Ensure each comment is a proper UTF-8 string
+                comments_list = [str(comment) for comment in prof_data['comments']]
+                comments_text = '\n---\n'.join(comments_list)
+            else:
+                comments_text = ''
+            row.append(comments_text)
+        
+        ws.append(row)
+    
+    # Auto-adjust column widths for better readability
+    for column in ws.columns:
+        max_length = 0
+        column_letter = get_column_letter(column[0].column)
+        for cell in column:
+            try:
+                if cell.value:
+                    max_length = max(max_length, len(str(cell.value)))
+            except:
+                pass
+        adjusted_width = min(max_length + 2, 100)  # Cap at 100
+        ws.column_dimensions[column_letter].width = adjusted_width
+    
+    # Prepare response with UTF-8 encoding
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=utf-8'
+    )
+    # Use encoded filename to support international characters
+    filename = 'professors_rating.xlsx'
+    response['Content-Disposition'] = f'attachment; filename="{filename}"'
+    response['Content-Type'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    
+    wb.save(response)
+    return response
