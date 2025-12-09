@@ -66,6 +66,14 @@ admin_patterns = [
     path('internship-surveys/', admin_views.internship_surveys_list, name='admin_internship_surveys_list'),
     path('internship-surveys/<int:pk>/', admin_views.internship_survey_detail, name='admin_internship_survey_detail'),
     path('internship-surveys/<int:pk>/delete/', admin_views.internship_survey_delete, name='admin_internship_survey_delete'),
+    
+    # Internship Department Rating
+    path('internship-department-rating/', admin_views.admin_internship_department_rating, name='admin_internship_department_rating'),
+    path('internship-department-rating/export/', admin_views.admin_internship_department_rating_export, name='admin_internship_department_rating_export'),
+    
+    # Internship School Rating
+    path('internship-school-rating/', admin_views.admin_internship_school_rating, name='admin_internship_school_rating'),
+    path('internship-school-rating/export/', admin_views.admin_internship_school_rating_export, name='admin_internship_school_rating_export'),
 ]
 
 urlpatterns = [

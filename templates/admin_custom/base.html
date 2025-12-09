@@ -247,8 +247,14 @@
             <li><a href="{% url 'admin_surveys_list' %}" class="{% if 'surveys' in request.path and 'internship' not in request.path %}active{% endif %}">
                 <i class="fas fa-poll"></i> Surveys
             </a></li>
-            <li><a href="{% url 'admin_internship_surveys_list' %}" class="{% if 'internship-surveys' in request.path %}active{% endif %}">
+            <li><a href="{% url 'admin_internship_surveys_list' %}" class="{% if 'internship-surveys' in request.path and 'rating' not in request.path %}active{% endif %}">
                 <i class="fas fa-briefcase"></i> Internship Surveys
+            </a></li>
+            <li><a href="{% url 'admin_internship_department_rating' %}" class="{% if 'internship-department-rating' in request.path %}active{% endif %}">
+                <i class="fas fa-chart-line"></i> Internship Dept Rating
+            </a></li>
+            <li><a href="{% url 'admin_internship_school_rating' %}" class="{% if 'internship-school-rating' in request.path %}active{% endif %}">
+                <i class="fas fa-university"></i> Internship School Rating
             </a></li>
             <li><a href="/" target="_blank">
                 <i class="fas fa-external-link-alt"></i> View Site

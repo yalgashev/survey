@@ -1066,3 +1066,437 @@ def admin_professors_rating_export(request):
     
     wb.save(response)
     return response
+
+
+@login_required
+@user_passes_test(is_admin)
+def admin_internship_department_rating(request):
+    """Internship department rating report with detailed question averages"""
+    from django.db.models import Avg
+    
+    # Get all internship questions ordered by their order field
+    questions = InternshipQuestion.objects.filter(is_active=True, question_type='rating').order_by('order')
+    text_question = InternshipQuestion.objects.filter(is_active=True, question_type='text').first()
+    
+    # Get all departments
+    departments = Department.objects.all().select_related('school')
+    
+    departments_data = []
+    
+    for department in departments:
+        # Get all groups for this department
+        groups = Group.objects.filter(department=department)
+        
+        # Get all internship surveys for these groups
+        surveys = InternshipSurvey.objects.filter(group__in=groups)
+        
+        if not surveys.exists():
+            continue
+        
+        department_row = {
+            'department': department,
+            'question_averages': [],
+            'comments': []
+        }
+        
+        # Calculate average for each rating question
+        total_sum = 0
+        valid_question_count = 0
+        
+        for question in questions:
+            # Get all answers for this question and department (excluding N/A)
+            answers = InternshipAnswer.objects.filter(
+                internship_survey__group__department=department,
+                question=question,
+                rating_value__isnull=False
+            ).exclude(rating_value=6)  # Exclude N/A
+            
+            if answers.exists():
+                avg = answers.aggregate(Avg('rating_value'))['rating_value__avg']
+                department_row['question_averages'].append(round(avg, 2) if avg else 0)
+                total_sum += avg if avg else 0
+                valid_question_count += 1
+            else:
+                department_row['question_averages'].append(0)
+        
+        # Calculate overall average
+        department_row['overall_average'] = round(total_sum / valid_question_count, 2) if valid_question_count > 0 else 0
+        
+        # Get text comments
+        if text_question:
+            comments = InternshipAnswer.objects.filter(
+                internship_survey__group__department=department,
+                question=text_question,
+                text_value__isnull=False
+            ).exclude(text_value='').values_list('text_value', flat=True)
+            department_row['comments'] = list(comments)
+        
+        departments_data.append(department_row)
+    
+    # Sort by overall average (ascending - lower is better since 1 is best)
+    departments_data.sort(key=lambda x: x['overall_average'])
+    
+    context = {
+        'departments_data': departments_data,
+        'questions': questions,
+        'text_question': text_question,
+    }
+    
+    return render(request, 'admin_custom/internship_department_rating.html', context)
+
+
+@login_required
+@user_passes_test(is_admin)
+def admin_internship_department_rating_export(request):
+    """Export internship department rating to Excel"""
+    from django.db.models import Avg
+    from django.http import HttpResponse
+    from openpyxl import Workbook
+    from openpyxl.utils import get_column_letter
+    
+    # Get all internship questions ordered by their order field
+    questions = InternshipQuestion.objects.filter(is_active=True, question_type='rating').order_by('order')
+    text_question = InternshipQuestion.objects.filter(is_active=True, question_type='text').first()
+    
+    # Get all departments
+    departments = Department.objects.all().select_related('school')
+    
+    departments_data = []
+    
+    for department in departments:
+        # Get all groups for this department
+        groups = Group.objects.filter(department=department)
+        
+        # Get all internship surveys for these groups
+        surveys = InternshipSurvey.objects.filter(group__in=groups)
+        
+        if not surveys.exists():
+            continue
+        
+        department_row = {
+            'department': department,
+            'question_averages': [],
+            'comments': []
+        }
+        
+        # Calculate average for each rating question
+        total_sum = 0
+        valid_question_count = 0
+        
+        for question in questions:
+            # Get all answers for this question and department (excluding N/A)
+            answers = InternshipAnswer.objects.filter(
+                internship_survey__group__department=department,
+                question=question,
+                rating_value__isnull=False
+            ).exclude(rating_value=6)  # Exclude N/A
+            
+            if answers.exists():
+                avg = answers.aggregate(Avg('rating_value'))['rating_value__avg']
+                department_row['question_averages'].append(round(avg, 2) if avg else 0)
+                total_sum += avg if avg else 0
+                valid_question_count += 1
+            else:
+                department_row['question_averages'].append(0)
+        
+        # Calculate overall average
+        department_row['overall_average'] = round(total_sum / valid_question_count, 2) if valid_question_count > 0 else 0
+        
+        # Get text comments
+        if text_question:
+            comments = InternshipAnswer.objects.filter(
+                internship_survey__group__department=department,
+                question=text_question,
+                text_value__isnull=False
+            ).exclude(text_value='').values_list('text_value', flat=True)
+            department_row['comments'] = list(comments)
+        
+        departments_data.append(department_row)
+    
+    # Sort by overall average (ascending - lower is better since 1 is best)
+    departments_data.sort(key=lambda x: x['overall_average'])
+    
+    # Create Excel workbook
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Internship Dept Rating"
+    
+    # Create header row
+    headers = ['#', 'Department Name', 'School']
+    for q in questions:
+        headers.append(f'Q{q.order}')
+    headers.append('Average Score')
+    if text_question:
+        headers.append(f'Comments (Q{text_question.order})')
+    
+    ws.append(headers)
+    
+    # Add data rows with explicit UTF-8 handling
+    for idx, dept_data in enumerate(departments_data, start=1):
+        row = [
+            idx,
+            str(dept_data['department'].name),
+            str(dept_data['department'].school.name) if dept_data['department'].school else ''
+        ]
+        
+        # Add question averages
+        for avg in dept_data['question_averages']:
+            row.append(avg if avg > 0 else '')
+        
+        # Add overall average
+        row.append(dept_data['overall_average'])
+        
+        # Add comments (joined with newlines)
+        if text_question:
+            if dept_data['comments']:
+                comments_list = [str(comment) for comment in dept_data['comments']]
+                comments_text = '\n---\n'.join(comments_list)
+            else:
+                comments_text = ''
+            row.append(comments_text)
+        
+        ws.append(row)
+    
+    # Auto-adjust column widths
+    for column in ws.columns:
+        max_length = 0
+        column_letter = get_column_letter(column[0].column)
+        for cell in column:
+            try:
+                if cell.value:
+                    max_length = max(max_length, len(str(cell.value)))
+            except:
+                pass
+        adjusted_width = min(max_length + 2, 100)
+        ws.column_dimensions[column_letter].width = adjusted_width
+    
+    # Prepare response
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=utf-8'
+    )
+    filename = 'internship_department_rating.xlsx'
+    response['Content-Disposition'] = f'attachment; filename="{filename}"'
+    response['Content-Type'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    
+    wb.save(response)
+    return response
+
+
+@login_required
+@user_passes_test(is_admin)
+def admin_internship_school_rating(request):
+    """Internship school rating report with detailed question averages"""
+    from django.db.models import Avg
+    
+    # Get all internship questions ordered by their order field
+    questions = InternshipQuestion.objects.filter(is_active=True, question_type='rating').order_by('order')
+    text_question = InternshipQuestion.objects.filter(is_active=True, question_type='text').first()
+    
+    # Get all schools
+    schools = School.objects.all()
+    
+    schools_data = []
+    
+    for school in schools:
+        # Get all departments for this school
+        departments = Department.objects.filter(school=school)
+        
+        # Get all groups for these departments
+        groups = Group.objects.filter(department__in=departments)
+        
+        # Get all internship surveys for these groups
+        surveys = InternshipSurvey.objects.filter(group__in=groups)
+        
+        if not surveys.exists():
+            continue
+        
+        school_row = {
+            'school': school,
+            'question_averages': [],
+            'comments': []
+        }
+        
+        # Calculate average for each rating question
+        total_sum = 0
+        valid_question_count = 0
+        
+        for question in questions:
+            # Get all answers for this question and school (excluding N/A)
+            answers = InternshipAnswer.objects.filter(
+                internship_survey__group__department__school=school,
+                question=question,
+                rating_value__isnull=False
+            ).exclude(rating_value=6)  # Exclude N/A
+            
+            if answers.exists():
+                avg = answers.aggregate(Avg('rating_value'))['rating_value__avg']
+                school_row['question_averages'].append(round(avg, 2) if avg else 0)
+                total_sum += avg if avg else 0
+                valid_question_count += 1
+            else:
+                school_row['question_averages'].append(0)
+        
+        # Calculate overall average
+        school_row['overall_average'] = round(total_sum / valid_question_count, 2) if valid_question_count > 0 else 0
+        
+        # Get text comments
+        if text_question:
+            comments = InternshipAnswer.objects.filter(
+                internship_survey__group__department__school=school,
+                question=text_question,
+                text_value__isnull=False
+            ).exclude(text_value='').values_list('text_value', flat=True)
+            school_row['comments'] = list(comments)
+        
+        schools_data.append(school_row)
+    
+    # Sort by overall average (ascending - lower is better since 1 is best)
+    schools_data.sort(key=lambda x: x['overall_average'])
+    
+    context = {
+        'schools_data': schools_data,
+        'questions': questions,
+        'text_question': text_question,
+    }
+    
+    return render(request, 'admin_custom/internship_school_rating.html', context)
+
+
+@login_required
+@user_passes_test(is_admin)
+def admin_internship_school_rating_export(request):
+    """Export internship school rating to Excel"""
+    from django.db.models import Avg
+    from django.http import HttpResponse
+    from openpyxl import Workbook
+    from openpyxl.utils import get_column_letter
+    
+    # Get all internship questions ordered by their order field
+    questions = InternshipQuestion.objects.filter(is_active=True, question_type='rating').order_by('order')
+    text_question = InternshipQuestion.objects.filter(is_active=True, question_type='text').first()
+    
+    # Get all schools
+    schools = School.objects.all()
+    
+    schools_data = []
+    
+    for school in schools:
+        # Get all departments for this school
+        departments = Department.objects.filter(school=school)
+        
+        # Get all groups for these departments
+        groups = Group.objects.filter(department__in=departments)
+        
+        # Get all internship surveys for these groups
+        surveys = InternshipSurvey.objects.filter(group__in=groups)
+        
+        if not surveys.exists():
+            continue
+        
+        school_row = {
+            'school': school,
+            'question_averages': [],
+            'comments': []
+        }
+        
+        # Calculate average for each rating question
+        total_sum = 0
+        valid_question_count = 0
+        
+        for question in questions:
+            # Get all answers for this question and school (excluding N/A)
+            answers = InternshipAnswer.objects.filter(
+                internship_survey__group__department__school=school,
+                question=question,
+                rating_value__isnull=False
+            ).exclude(rating_value=6)  # Exclude N/A
+            
+            if answers.exists():
+                avg = answers.aggregate(Avg('rating_value'))['rating_value__avg']
+                school_row['question_averages'].append(round(avg, 2) if avg else 0)
+                total_sum += avg if avg else 0
+                valid_question_count += 1
+            else:
+                school_row['question_averages'].append(0)
+        
+        # Calculate overall average
+        school_row['overall_average'] = round(total_sum / valid_question_count, 2) if valid_question_count > 0 else 0
+        
+        # Get text comments
+        if text_question:
+            comments = InternshipAnswer.objects.filter(
+                internship_survey__group__department__school=school,
+                question=text_question,
+                text_value__isnull=False
+            ).exclude(text_value='').values_list('text_value', flat=True)
+            school_row['comments'] = list(comments)
+        
+        schools_data.append(school_row)
+    
+    # Sort by overall average (ascending - lower is better since 1 is best)
+    schools_data.sort(key=lambda x: x['overall_average'])
+    
+    # Create Excel workbook
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Internship School Rating"
+    
+    # Create header row
+    headers = ['#', 'School Name', 'School Code']
+    for q in questions:
+        headers.append(f'Q{q.order}')
+    headers.append('Average Score')
+    if text_question:
+        headers.append(f'Comments (Q{text_question.order})')
+    
+    ws.append(headers)
+    
+    # Add data rows with explicit UTF-8 handling
+    for idx, school_data in enumerate(schools_data, start=1):
+        row = [
+            idx,
+            str(school_data['school'].name),
+            str(school_data['school'].code)
+        ]
+        
+        # Add question averages
+        for avg in school_data['question_averages']:
+            row.append(avg if avg > 0 else '')
+        
+        # Add overall average
+        row.append(school_data['overall_average'])
+        
+        # Add comments (joined with newlines)
+        if text_question:
+            if school_data['comments']:
+                comments_list = [str(comment) for comment in school_data['comments']]
+                comments_text = '\n---\n'.join(comments_list)
+            else:
+                comments_text = ''
+            row.append(comments_text)
+        
+        ws.append(row)
+    
+    # Auto-adjust column widths
+    for column in ws.columns:
+        max_length = 0
+        column_letter = get_column_letter(column[0].column)
+        for cell in column:
+            try:
+                if cell.value:
+                    max_length = max(max_length, len(str(cell.value)))
+            except:
+                pass
+        adjusted_width = min(max_length + 2, 100)
+        ws.column_dimensions[column_letter].width = adjusted_width
+    
+    # Prepare response
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=utf-8'
+    )
+    filename = 'internship_school_rating.xlsx'
+    response['Content-Disposition'] = f'attachment; filename="{filename}"'
+    response['Content-Type'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    
+    wb.save(response)
+    return response
